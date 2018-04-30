@@ -1,0 +1,171 @@
+<!-- Author: Robert hudson
+    Class: IS 490
+    Project: Childrens learning website
+    Date: 4/18/18
+    mathExploded.html
+
+simple addition and subtractions randomly generated from an array
+*need brief instructions before starting the game
+displays a number, child must enter two numbers that either that would complete the equation
+	-->
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" type="text/css" href="css/style.css">
+<script src="private/jFunctions.js"> </script> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+</head>
+
+<body>
+
+    <div id="mySidenav" class="sidenav">
+        <a href="index.html"id = "home">Home</a>
+        <a href="mathAddSub.html" id= "addsub">Add/Subtract</a>
+        <a href="mathReverse.html" id= "reverse">Backward Math</a>
+        <a href="readingSightWords.html" id = "sightWords">Sight Words</a>
+        <a href="readingHangMan.html" id = "hangman">Hang Man</a>
+        <a href="readingSentences.html" id = "sentences">Silly Sentences</a>
+    </div>
+
+    
+
+    <div id="main">
+    
+   
+    
+    <!---site contents go inside of here to move with menu-->
+        
+        </div>
+    
+    <div class = "contentInst" >
+        <h1>Backwards Math</h1>
+        <br/>
+        <br/>
+        <br/>
+       <div id="inst" >
+        
+        <ol>
+       <li>A number will appear on the screen</li> <li>Enter two different numbers that either add up tothat number</li>
+            
+     </ol>
+         
+    </div>
+    </div>
+    
+    <div class = "content">
+   <button class = "buttons" id = "go" onclick = "xplodeGo()">GO</button>
+<br/>
+    
+        <div class = "problem" id = "problem" style = "visibility:hidden">
+            <span id = "number" ></span>
+        <span>=</span>
+        <input  type = "text" id = "n1" 
+           style= "visibility: hidden"/>
+     <span > +</span>
+        <input  type = "text" id = "n2" 
+           style= "visibility: hidden"/>
+        </div>
+        <br>
+        <button  class = "buttons"type = "submit" id = "submit" onclick = "solveIt()"style= "visibility: hidden">SUBMIT</button>
+    <h1 id = "result"> </h1>
+    
+    <div class = "scoreBar">
+        <h2>Score is:</h2><h2 id = "score">0</h2></div> 
+</div>
+<script>
+    
+var score = 0;
+var number;
+
+    
+  
+
+  
+    function xplodeGo()       //starts the game
+    {
+    document.getElementById("problem").setAttribute('style',"visibility: visible;");
+         document.getElementById("n1").setAttribute('style',"visibility: visible;");
+         document.getElementById("n2").setAttribute('style',"visibility: visible;");
+    document.getElementById("number").setAttribute('style',"visibility: visible;");
+    document.getElementById("submit").setAttribute('style',"visibility: visible;");
+    document.getElementById("go").setAttribute('style',"visibility: hidden;");
+        removeElement("inst"); // remove instuctions from page
+        
+        simpleProblem();
+    }
+ 
+    
+    
+function simpleProblem()
+    {
+        //random number between 1 and 100
+        number = parseInt(Math.floor(Math.random() * 20) + 1);
+document.getElementById("number").innerHTML = number;
+    }
+    
+   
+    
+    
+    
+    function solveIt() //when button is pressed
+    { 
+        
+       var n1 =  document.getElementById("n1").value;
+        var n2 =  document.getElementById("n2").value;
+        
+       
+        
+       if(parseInt(n1) + parseInt(n2) == number) //if correct
+                {
+                   //give message 
+                    //give point
+                    //go again
+                    alert("got it");
+                  
+                    
+                    score++;
+                    document.getElementById("score").innerHTML = score;
+                    clearIt();
+                    document.getElementById("n1").value = '';
+                    document.getElementById("n2").value = '';
+                    simpleProblem();
+                    
+                    
+                }
+              else  //incorrect
+                  {
+                      alert("Almost, try again!!");
+                  }
+          
+         
+         
+    }
+    
+    
+function clearIt()
+    {
+      n1 = null;
+        n2 = null;
+       answer = null;
+        sign = null;
+        
+    }
+   
+    
+    //for voice
+$('#number').click(function(){responsiveVoice.speak(($("#number").text()));})   
+    
+    
+</script>
+    
+    
+</body>
+
+</html>
+
+    

@@ -1,0 +1,193 @@
+
+
+<!-- Author: Robert hudson
+    Class: IS 490
+    Project: Childrens learning website
+    Date: 4/11/18
+    readingSightWords.html
+
+* needs instruction before game starts
+*needed parent present to play
+displays  one sight word at a time, child is to read the sight word and say it, parent chooses corrrect or incorrect, incorreft words are tallied atht ehend and displayed  to show parent where they need dwork 
+	-->
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="css/style.css"> 
+<script src="private/jFunctions.js"> </script>
+    <script src="private/arrays.js"> </script>
+<script src='https://code.responsivevoice.org/responsivevoice.js'></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+</head>
+
+<body>
+
+   <div id="mySidenav" class="sidenav">
+        <a href="index.html"id = "home">Home</a>
+        <a href="mathAddSub.html" id= "addsub">Add/Subtract</a>
+        <a href="mathReverse.html" id= "reverse">Backward Math</a>
+        <a href="readingSightWords.html" id = "sightWords">Sight Words</a>
+        <a href="readingHangMan.html" id = "hangman">Hang Man</a>
+        <a href="readingSentences.html" id = "sentences">Silly Sentences</a>
+    </div>
+
+    
+
+    <div id="main">
+    
+    
+    
+    <!---site contents go inside of here if want to move when menu come up-->
+    
+    </div>
+    <div class = "contentInst" >
+        <h1>Sight Words</h1>
+        <br/>
+        <br/>
+        <br/>
+       <div id="inst" ><p>Sight words are words that appear frequently in most of the text we read, they cannot be easily sounded out.  </p><p>Learning these words helps children become more confident readers.</p>
+        
+        <ol>
+       <li>One sight words will appear on the screan at a time, if your child reads it correctly click yes, if not click no.</li>
+            <li>At the end a score will be issued along with a list of sight words that your child missed and needs to work on</li>
+     </ol>
+         
+    </div>
+    </div>
+    
+    <div class = "content">
+        
+      <h2 id = "word"> </h2>  
+        
+      
+    
+   <input type = "image" src = "css/yes.png" id ="correct" onclick = "correct()"  style="visibility:hidden" />
+        <button class = "buttons" id = "go" onclick = "go()">GO</button>
+        
+
+        <input type = "image" src = "css/no.png" id ="wrong" onclick = "wrong()" style="visibility:hidden"/>
+
+        <br/>
+        <br/>
+        <br/>
+        <div class = "scoreBar">
+            <h2>Score is:</h2><h2 id = "score"></h2></div> 
+    </div>
+
+    <script>
+    
+
+
+var current = 0;  
+var currentScore = 0;
+var needsWork = [];
+var perfect = "PERFECT";
+    
+ 
+function go()       //starts the game
+    {
+       
+removeElement("inst");
+        
+        
+    document.getElementById("correct").setAttribute('style',"visibility: visible;");
+    document.getElementById("wrong").setAttribute('style',"visibility: visible;");
+document.getElementById("word").innerHTML = wordList[current];    
+        
+        //document.getElementById("word").innerHTML = wordList[0];
+    document.getElementById("go").setAttribute('style',"visibility: hidden;");
+        }
+    
+function correct()
+    { current++;
+        currentScore++;
+     if(current == wordList.length) //if at end of videos
+     {
+         displayResults();
+         return;
+         
+     }
+        
+        document.getElementById("word").innerHTML = wordList[current];
+        document.getElementById("score").innerHTML = currentScore;
+        
+    }
+    
+function wrong()
+    {
+        if(current == wordList.length)  //if at end of list
+     {
+         displayResults();
+         return;
+     }
+        
+       needsWork.push(wordList[current-1]);
+        
+       document.getElementById("word").innerHTML = wordList[current];
+        current++;
+        
+    }
+    
+    
+function displayResults()
+    {
+        
+        alert("you scored a " + Math.round(currentScore/wordList.length * 100) + "%");
+   
+       //display missed words
+       // for(var i = 0; i<needsWork.length;i++)
+       //    {
+        //   document.write(needsWork[i] + "<br />");
+        //   }
+        console.log(needsWork);
+        document.getElementById("word").innerHTML = needsWork;
+        
+        
+        
+        if(currentScore == wordList.length ) //if got all correct
+            {
+       document.getElementById("word").innerHTML = perfect;
+
+        document.getElementById("correct").setAttribute('style',"visibility: hidden;"); //hide correct button
+        document.getElementById("wrong").setAttribute('style',"visibility: hidden;");//hide wrong button
+            }
+        
+    }
+    
+   function removeElement(elementId)
+{
+// Removes an element from the document
+var element = document.getElementById(elementId);
+element.parentNode.removeChild(element);
+}   
+  
+        
+             
+            
+        
+    
+//for responsiveword.js
+$('#word').click(function(){responsiveVoice.speak(($("#word").text()));})
+    
+    
+</script>
+    
+    
+</body><div class="footer" style="width:300px;vertical-align:top;font-family: Arial;font-size:9pt;line-height: normal">
+<a rel="license" href="//responsivevoice.org/"><img title="ResponsiveVoice Text To Speech" src="https://responsivevoice.org/wp-content/uploads/2014/08/120x31.png" style="float:left;padding-right:2px" /></a><span xmlns:dct="https://purl.org/dc/terms/" property="dct:title"><a href="//responsivevoice.org/" target="_blank" title="ResponsiveVoice Text To Speech">ResponsiveVoice</a></span> used under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" title="Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License">Non-Commercial License</a></div>
+<div style="clear:both;">&nbsp;</div>
+    </html>
+
+      
+    
+    
+    
+    
+    
+
+

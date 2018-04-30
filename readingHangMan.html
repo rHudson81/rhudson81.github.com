@@ -1,0 +1,273 @@
+
+
+<!-- Author: Robert hudson
+    Class: IS 490
+    Project: Childrens learning website
+    Date: 4/11/18
+    readinghangMan.html
+
+* needs instruction before game starts
+*child gueses a letter if its correct the letter is reveiled, if not it is added to the hang man picture
+	-->
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="css/style.css"> 
+<script src="private/jFunctions.js"> </script>
+    <script src="private/arrays.js"> </script>
+<script src='https://code.responsivevoice.org/responsivevoice.js'></script>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    
+</head>
+
+<body>
+
+    <div id="mySidenav" class="sidenav">
+        <a href="home.html"id = "home">Home</a>
+        <a href="mathAddSub.html" id= "addsub">Add/Subtract</a>
+        <a href="mathReverse.html" id= "reverse">Backward Math</a>
+        <a href="readingSightWords.html" id = "sightWords">Sight Words</a>
+        <a href="readingHangMan.html" id = "hangman">Hang Man</a>
+        <a href="readingSentences.html" id = "sentences">Silly Sentences</a>
+    </div>
+
+    
+
+    <div id="main">
+    
+    
+    
+    <!---site contents go inside of here if want to move when menu come up-->
+    
+    </div>
+    <div class = "contentInst">
+        <h1>Farm Animal Hang Man</h1>
+        
+        <div id="inst">
+        <ol>
+       <li>Have your child try and spell the animal.</li> 
+            
+            
+            <li>Enter one letter at a time, and press try it to see if it is correct.</li>
+     </ol>
+         <button class = "buttons" type = "submit" id = "instSub" onclick = "removeElement('inst');">ok lets play</button>
+        </div>
+    </div>
+    
+    
+    <div class = "content">
+        
+        <div id = "image"  style="visibility:hidden"></div>
+      <h2 id = "word" style="visibility:hidden"></h2> 
+        <input type= text id = "attempt"  autofocus required style="visibility:hidden">
+        <button  class = "buttons" type = "submit" id = "submit" onclick = "checkLetter(cloneBlank, cloneArray)" style="visibility:hidden">Try it</button>
+        
+       
+        <br>
+        <span class ="bottom" id = "bottomTries" style="visibility:hidden">
+        
+        <span id = "triesLabel">tries left: </span>
+                        <div id = "triesImage"  style="visibility:hidden"></div>
+
+            <span id = "attemptsLeft" ></span>
+        </span>
+        
+      
+    </div>
+
+  
+    
+<script>
+    
+   
+
+    
+    
+ 
+
+
+
+//get one word for databse
+var word = getWord(farmAnimals);
+
+//for attempts
+var triesLeft = word.length + 4;
+
+  //set first image base on how many trieds left  
+document.getElementById("triesImage").innerHTML= "<img src = 'css/" + triesLeft + ".jpg'>";
+    
+//set the pic of the farm animal
+ document.getElementById("image").innerHTML= "<img src = 'css/" + word + ".png'>";   
+    
+    
+    //show tries left
+document.getElementById("attemptsLeft").innerHTML = triesLeft;
+
+//copy it
+var clone = word;
+
+    
+    //split string into array
+    var cloneArray = clone.split("");
+
+//make copy of array before splitting to compare to
+    var cloneBlank = cloneArray.slice(0);
+    
+//replace all letters with blanks
+var blankWord = makeBlanks(cloneArray)
+  
+  document.getElementById("word").innerHTML = blankWord.join(" ");
+  
+  
+  
+    //console.log(cloneBlank);
+    
+    
+    
+    
+    
+//functions
+    
+  
+    
+    
+    function getWord(farmAnimals)
+    { 
+         
+      word = farmAnimals[Math.floor(Math.random() * farmAnimals.length)];
+       word = word.toLowerCase();
+        return word;
+    }
+    
+    
+    function makeBlanks(cloneArray)
+    {
+        var x;
+        for(x = 0; x < cloneArray.length; x++)
+        {
+            cloneArray[x] = "_";
+        }
+        return cloneArray;
+        
+    }
+    
+    function checkLetter(cloneBlank, cloneArray)
+    {
+        
+        var length = cloneBlank.length;
+        var letter  = document.getElementById("attempt").value;
+        letter = letter.trim();
+        letter = letter.toLowerCase();
+        var tick = 0;//for if the letter was success
+    
+        for(var x = 0; x < length; x++)
+            {
+                
+              if(letter == cloneBlank[x]) //if found
+                  {
+                     //switch the correspoding letter from _ to letter
+                cloneArray[x] = letter; 
+                document.getElementById("word").innerHTML = cloneArray.join(" ");
+                document.getElementById("attempt").value = " ";
+                      tick = 1; //mark it
+                  }
+               
+            }
+        
+        
+        if(tick == 0) //if letter isnt found  decrement triesleft
+           {
+           triesLeft --;
+           
+           }
+        
+      
+        //if the compete the puzzle
+        if(isInArray("_",cloneArray) == false)//if no -'s left in array
+           {
+          
+           
+           alert("winner");
+            //   document.getElementById("score").innerHTML = score;
+               location.reload();
+               //word = getWord("farnAnimals");
+            }
+           
+        
+        
+        
+        
+        //redisplay the tries left
+        document.getElementById("attemptsLeft").innerHTML = triesLeft;
+        
+        //to change hangman graphic
+        document.getElementById("triesImage").innerHTML= "<img src = 'css/" + triesLeft + ".jpg'>";
+        
+        
+        //if out of tries
+        if(triesLeft == 0)
+            {
+                alert("sorry you didnt get it");
+                word = getWord("farnAnimals");
+            }
+        
+    }
+    
+    
+    //see if its in the array
+    function isInArray(value, array) 
+    {
+        return array.indexOf(value) > -1;
+    }
+    
+ 
+    
+    
+    function removeElement(elementId)
+    {
+    // Removes an element from the document
+    var element = document.getElementById(elementId);
+    element.parentNode.removeChild(element);
+
+    //and make everything else visible
+     document.getElementById("triesImage").setAttribute('style',"visibility: visible;");
+        document.getElementById("image").setAttribute('style',"visibility: visible;");
+        document.getElementById("word").setAttribute('style',"visibility: visible;");
+        //document.getElementById("word2").setAttribute('style',"visibility: visible;");
+        document.getElementById("attempt").setAttribute('style',"visibility: visible;");
+        document.getElementById("submit").setAttribute('style',"visibility: visible;");
+        document.getElementById("bottomTries").setAttribute('style',"visibility: visible;");
+
+    }   
+
+    
+    
+
+    
+</script>
+ 
+    
+    
+    
+    
+    
+    
+    
+    
+</body>
+    
+
+    </html>
+
+   
+    
+    
+    
+    
+    
+
+

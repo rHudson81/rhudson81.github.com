@@ -1,0 +1,213 @@
+
+/* Author: Robert hudson
+    Class: IS 490
+    Project: Childrens learning website
+    Date: 4/11/18
+   games.css
+*/
+
+
+
+body{
+        background: url("background.jpg") no-repeat center center fixed;
+        background-size: cover; /*  or 100px; */
+       
+        }
+
+.content{
+             max-width: 1000px;
+            margin: auto;
+            text-align: center;
+            }
+
+.contentInst
+{
+    max-width:1000px;
+            margin: auto;
+            text-align: center;
+    font-size: 25px;
+            }
+}
+
+/*  for text box appearanes */
+.TA
+{
+  
+    ;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 50px;  
+    
+}
+
+/* for buttons to look better*/
+.buttons {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+
+/* for footer */
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+}
+
+
+
+
+
+
+/* for sentences */
+
+#simple{
+            font-family: "Arial";
+            font-size:100px;
+            margin-top: 0;
+            margin-bottom: .5em;
+        }
+
+#silly{
+            font-family: "Arial";
+            font-size:100px;
+            margin-top: 0;
+            margin-bottom: .5em;
+        }
+
+
+
+
+
+
+
+
+/*    for sight words placement */
+    #next{
+            float:left;
+            
+        }
+
+        #nope{
+            float:right;
+        }
+        
+        #word{
+            font-family: "Arial";
+            font-size:100px;
+            margin-top: 0;
+            margin-bottom: .5em;
+            word-break:normal;
+        }
+        #correct{
+            height: 70px;
+            width: 70px;
+            float:left;
+        }
+        #wrong{
+            height: 70px;
+            width: 70px;
+            float:right;
+        }
+
+
+/* for simple math */
+.problem{
+    
+    font-size: 100px;
+}
+
+
+
+
+
+
+/* for nav */
+/* Style the links inside the sidenav */
+#mySidenav a {
+    position: absolute; /* Position them relative to the browser window */
+    left: -170px; /* Position them outside of the screen */
+    transition: 0.3s; /* Add transition on hover */
+    padding: 10px; /* 15px padding */
+    width: 200px; /* Set a specific width */
+    text-decoration: none; /* Remove underline */
+    font-size: 40px; /* Increase font size */
+    color: black; /* White text color */
+    border-radius: 0 5px 5px 0; /* Rounded corners on the top right and bottom right side */
+}
+
+#mySidenav a:hover {
+    left: 0; /* On mouse-over, make the elements appear as they should */
+}
+
+/* The home link: 20px from the top with a green background */
+ #home {
+    top: 20px;
+    background-color: #FF0000;
+}
+
+
+#addsub {
+    top: 120px;
+    background-color: #FF7F00; 
+}
+
+#reverse {
+    top: 220px;
+    background-color:  #FFFF00; 
+}
+
+#sightWords {
+    top: 320px;
+background-color: #00FF00; 
+
+}
+
+#hangman {
+    top: 420px;
+
+    background-color: #0000FF; 
+
+}
+
+#sentences {
+    top: 520px;
+
+    background-color: #4B0082; 
+
+}
+
+/*for icons for naviagation menun */
+.navIcon {
+    
+    max-width:750px;
+  max-height:75px;
+  width: auto;
+  height: auto;
+    
+}
+
+
+/* for hangman image resize */
+
+img {
+  
+  max-width:600px;
+  max-height:300px;
+  width: auto;
+  height: auto;
+}
+
+
+
+

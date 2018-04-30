@@ -1,0 +1,222 @@
+<!-- Author: Robert hudson
+    Class: IS 490
+    Project: Childrens learning website
+    Date: 4/11/18
+    mathAddSub.html
+
+simple addition and subtractions randomly generated from a databse or an array
+*need brief instructions before starting the game
+displays simple math problem,child must get correct to move to next question
+possibility  of explaining the problem better if incorrect answer is given
+	-->
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" type="text/css" href="css/style.css">
+<script src="private/jFunctions.js"> </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+</head>
+
+<body>
+
+    <div id="mySidenav" class="sidenav">
+        <a href="index.html"id = "home">Home</a>
+        <a href="mathAddSub.html" id= "addsub">Add/Subtract</a>
+        <a href="mathReverse.html" id= "reverse">Backward Math</a>
+        <a href="readingSightWords.html" id = "sightWords">Sight Words</a>
+        <a href="readingHangMan.html" id = "hangman">Hang Man</a>
+        <a href="readingSentences.html" id = "sentences">Silly Sentences</a>
+    </div>
+
+    
+
+    <div id="main">
+    
+    
+    
+    <!---site contents go inside of here to move with menu-->
+    </div>
+    <div class = "contentInst" >
+        <h1>Add / Subtract</h1>
+        <br/>
+        <br/>
+        <br/>
+       <div id="inst" >
+        
+        <ol>
+       <li>Finish the equation by adding in the correct answer.</li> 
+            <li>Click on a number if you dont know what number it is, and it will be read aloud to you.</li>
+            
+     </ol>
+         
+    </div>
+    </div>
+    
+    
+    <div class = "content">
+     <br/>
+    <br/>
+    <br/>
+      <div class = "problem" style = "visibility:hidden">  
+        <span id = "n1" > </span>
+        <span id = "sign"> </span>
+        <span id = "n2" > </span> 
+          <span id = "equals" >=</span>
+       </div>
+    
+
+    <button class = "buttons" id = "go" onclick = "go()">GO</button>
+<br/>
+    <input class = "TA" type = "text" id = "answer" 
+           style= "visibility: hidden"/>
+    <button class = "buttons" type = "submit" id = "submit" onclick = "solveIt()"style= "visibility: hidden">SUBMIT</button>
+    <h1 id = "result"> </h1>
+    <br/>
+    <br/>
+    <br/>
+    <div class = "scoreBar">
+        <h2>Score is:</h2><h2 id = "score">0</h2></div> 
+
+<script>
+    
+var signArray = ["+","-"] ;
+var score = 0;
+var n1;
+var n2;
+var sign;
+    
+  
+
+  //functions  
+    function go()       //starts the game
+    {
+    
+        removeElement("inst");//remove instructions from page
+        
+        
+        
+        document.getElementById("answer").setAttribute('style',"visibility: visible;");
+    document.getElementById("n1").setAttribute('style',"visibility: visible;");
+        document.getElementById("sign").setAttribute('style',"visibility: visible;");
+        document.getElementById("n2").setAttribute('style',"visibility: visible;");
+       document.getElementById("equals").setAttribute('style',"visibility: visible;");
+        document.getElementById("submit").setAttribute('style',"visibility: visible;");
+        document.getElementById("go").setAttribute('style',"visibility: hidden;");
+        
+        simpleProblem();
+        }
+    
+function simpleProblem()
+    {
+n1 = parseInt(Math.floor(Math.random() * 10) + 1);
+n2 = parseInt(Math.floor(Math.random() * 10) + 1) ;
+sign = signArray[Math.floor(Math.random()*signArray.length)];
+        
+      
+        if(sign == "-") //to make sure there are no negative numbers
+            {   
+                if(n2 > n1) //switch em
+                   {
+                   var temp = n1;
+                    n1 = n2;
+                    n2 = temp;
+                    temp = null;
+                   }
+                
+            }
+        document.getElementById("n1").innerHTML = n1;
+        document.getElementById("sign").innerHTML = sign;
+        document.getElementById("n2").innerHTML = n2;
+       document.getElementById("answer").focus(); 
+    }
+    
+   function solveIt() //when button is pressed
+    { 
+        
+       var answer =  document.getElementById("answer").value;
+        
+        
+       if(sign == "+") //if addition
+          {
+          // alert(n1);
+           //   alert(n2);
+            if(n1 + n2 == answer) //if correct
+                {
+                   score++;
+                    document.getElementById("score").innerHTML = score;
+                    document.getElementById("answer").value = '';
+                    clearIt();
+                    simpleProblem();
+                    
+                    
+                }
+              else  //incorrect
+                  {
+                      alert("Almost, try again!!");
+                  }
+          
+          }
+          else //then subtract
+          {
+              //alert(n1);
+              //alert(n2);
+            if(n1 - n2 == answer)
+               {
+                score++;
+                   document.getElementById("score").innerHTML = score;
+                   document.getElementById("answer").value = '';
+                  clearIt(); 
+               simpleProblem();
+                   
+                   
+               }
+               else //wrong
+               {
+                alert("Almost, try again!!");
+               
+               }
+          }
+        
+    }
+    
+    
+function clearIt()
+    {
+      n1 = null;
+        n2 = null;
+       answer = null;
+        sign = null;
+        
+    }
+   
+$('#n1').click(function(){responsiveVoice.speak(($("#n1").text()));}) 
+    $('#n2').click(function(){responsiveVoice.speak(($("#n2").text()));})
+    
+    
+</script>
+    
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</body>
+
+</html>
+
+    
