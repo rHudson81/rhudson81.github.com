@@ -63,7 +63,7 @@
         
         <div id = "image"  style="visibility:hidden"></div>
       <h2 id = "word" style="visibility:hidden"></h2> 
-        <input type= text id = "attempt"  autofocus required style="visibility:hidden">
+        <input type= "text" id = "attempt"  autofocus style="visibility:hidden" required>
         <button  class = "buttons" type = "submit" id = "submit" onclick = "checkLetter(cloneBlank, cloneArray)" style="visibility:hidden">Try it</button>
         
        
@@ -172,10 +172,10 @@ var blankWord = makeBlanks(cloneArray)
                      //switch the correspoding letter from _ to letter
                 cloneArray[x] = letter; 
                 document.getElementById("word").innerHTML = cloneArray.join(" ");
-                document.getElementById("attempt").value = " ";
+                
                       tick = 1; //mark it
                   }
-               
+               document.getElementById("attempt").value = " ";
             }
         
         
