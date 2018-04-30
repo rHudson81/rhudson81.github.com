@@ -97,9 +97,7 @@ removeElement("inst");
         
     document.getElementById("correct").setAttribute('style',"visibility: visible;");
     document.getElementById("wrong").setAttribute('style',"visibility: visible;");
-document.getElementById("word").innerHTML = wordList[current];    
-        
-        //document.getElementById("word").innerHTML = wordList[0];
+    document.getElementById("word").innerHTML = wordList[current];    
     document.getElementById("go").setAttribute('style',"visibility: hidden;");
         }
     
@@ -138,14 +136,7 @@ function displayResults()
     {
         
         alert("you scored a " + Math.round(currentScore/wordList.length * 100) + "%");
-   
-       //display missed words
-       // for(var i = 0; i<needsWork.length;i++)
-       //    {
-        //   document.write(needsWork[i] + "<br />");
-        //   }
-        console.log(needsWork);
-        document.getElementById("word").innerHTML = needsWork;
+    document.getElementById("word").innerHTML = needsWork;
         
         
         
@@ -172,7 +163,7 @@ element.parentNode.removeChild(element);
         
     
 //for responsiveword.js
-$('#word').click(function(){responsiveVoice.speak(($("#word").text()));})
+$('#word').click(function(){responsiveVoice.speak(($("#word").text()), "Australian Female");})
     
     
 </script>
