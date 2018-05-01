@@ -63,15 +63,17 @@
         
         <div id = "image"  style="visibility:hidden"></div>
       <h2 id = "word" style="visibility:hidden"></h2> 
-        <input type= "text" id = "attempt"  autofocus style="visibility:hidden" required>
+       
+           <input type= "text" id = "attempt" required autofocus style="visibility:hidden"  >
         <button  class = "buttons" type = "submit" id = "submit" onclick = "checkLetter(cloneBlank, cloneArray)" style="visibility:hidden">Try it</button>
+           
         
        
         <br>
         <span class ="bottom" id = "bottomTries" style="visibility:hidden">
         
         <span id = "triesLabel">tries left: </span>
-                        <div id = "triesImage"  style="visibility:hidden"></div>
+                        <div class = "triesImage" id = "triesImage"  style="visibility:hidden"></div>
 
             <span id = "attemptsLeft" ></span>
         </span>
@@ -98,7 +100,7 @@ var word = getWord(farmAnimals);
 var triesLeft = word.length + 4;
 
   //set first image base on how many trieds left  
-document.getElementById("triesImage").innerHTML= "<img src = 'css/" + triesLeft + ".jpg'>";
+document.getElementById("triesImage").innerHTML= "<img src = 'css/" + triesLeft + ".png'>";
     
 //set the pic of the farm animal
  document.getElementById("image").innerHTML= "<img src = 'css/" + word + ".png'>";   
@@ -205,7 +207,7 @@ var blankWord = makeBlanks(cloneArray)
         document.getElementById("attemptsLeft").innerHTML = triesLeft;
         
         //to change hangman graphic
-        document.getElementById("triesImage").innerHTML= "<img src = 'css/" + triesLeft + ".jpg'>";
+        document.getElementById("triesImage").innerHTML= "<img src = 'css/" + triesLeft + ".png'>";
         
         
         //if out of tries
