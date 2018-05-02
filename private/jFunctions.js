@@ -102,4 +102,9 @@ element.parentNode.removeChild(element);
 }   
 
 
-//hangman stuff
+function displayMessage(message)
+    {
+    document.getElementById("message").setAttribute('style',"visibility: visible;");
+    document.getElementById("message").innerHTML = message;
+        
+    }

@@ -64,10 +64,12 @@
     <div class = "content">
         
         <div id = "image"  style="visibility:hidden"></div>
+        <span class = "message" id = "message" style = "visibility:hidden"></span>
       <h2 id = "word" style="visibility:hidden"></h2> 
        
            <input type= "text" id = "attempt" required autofocus style="visibility:hidden"  >
         <button  class = "buttons" type = "submit" id = "submit" onclick = "checkLetter(cloneBlank, cloneArray)" style="visibility:hidden">Try it</button>
+        <button  class = "buttons" type = "submit" id = "submit2" onclick = "alert()" style="visibility:hidden">PLAY AGAIN</button>
            
         
        
@@ -87,13 +89,6 @@
     
 <script>
     
-   
-
-    
-    
- 
-
-
 
 //get one word for databse
 var word = getWord(farmAnimals);
@@ -126,13 +121,7 @@ var blankWord = makeBlanks(cloneArray)
   
   document.getElementById("word").innerHTML = blankWord.join(" ");
   
-  
-  
-    //console.log(cloneBlank);
-    
-    
-    
-    
+
     
 //functions
     
@@ -169,65 +158,61 @@ var blankWord = makeBlanks(cloneArray)
         var letter  = document.getElementById("attempt").value;
         if(letter == " ")
            {
-           alert("empty");
+           displayMessage("enter a letter!")
            
            }else{
         
-        letter = letter.trim();
-        letter = letter.toLowerCase();
-        var tick = 0;//for if the letter was success
-    
-        for(var x = 0; x < length; x++)
-            {
-                
-              if(letter == cloneBlank[x]) //if found
-                  {
-                     //switch the correspoding letter from _ to letter
+                letter = letter.trim();
+                letter = letter.toLowerCase();
+                var tick = 0;//for if the letter was success
+
+                for(var x = 0; x < length; x++)
+                {
+
+                if(letter == cloneBlank[x]) //if found
+                {
+                //switch the correspoding letter from _ to letter
                 cloneArray[x] = letter; 
                 document.getElementById("word").innerHTML = cloneArray.join(" ");
-                
-                      tick = 1; //mark it
-                  }
-               document.getElementById("attempt").value = " ";
-            }
-        
-        
-        if(tick == 0) //if letter isnt found  decrement triesleft
-           {
-           triesLeft --;
-           
-           }
-        
-      
-        //if the compete the puzzle
-        if(isInArray("_",cloneArray) == false)//if no -'s left in array
-           {
-          
-           
-           alert("winner");
-            //   document.getElementById("score").innerHTML = score;
-               location.reload();
-               //word = getWord("farnAnimals");
-            }
-           
-        
-        
-        
-        
-        //redisplay the tries left
-        document.getElementById("attemptsLeft").innerHTML = triesLeft;
-        
-        //to change hangman graphic
-        //document.getElementById("triesImage").innerHTML= "<img src = 'css/" + triesLeft + ".png'>";
-        
-        
-        //if out of tries
-        if(triesLeft == 0)
-            {
-                alert("sorry you didnt get it");
-                word = getWord("farnAnimals");
-            }
-    }
+
+                tick = 1; //mark it
+                }
+                    document.getElementById("attempt").value = " ";
+                }
+
+
+                if(tick == 0) //if letter isnt found  decrement triesleft
+                {
+                    triesLeft --;
+                }
+
+
+                //if the compete the puzzle
+                if(isInArray("_",cloneArray) == false)//if no -'s left in array
+                {
+                    displayMessage("WINNER");
+                document.getElementById("submit2").setAttribute('style',"visibility: visible;");
+                document.getElementById("submit").setAttribute('style',"visibility: hidden;");
+                }
+
+
+
+
+
+                //redisplay the tries left
+                document.getElementById("attemptsLeft").innerHTML = triesLeft;
+
+                //to change hangman graphic
+                //document.getElementById("triesImage").innerHTML= "<img src = 'css/" + triesLeft + ".png'>";
+
+
+                //if out of tries
+                if(triesLeft == 0)
+                {
+                    alert("sorry you didnt get it");
+                    word = getWord("farnAnimals");
+                }
+                }
     }
     
     

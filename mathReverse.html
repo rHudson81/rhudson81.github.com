@@ -50,7 +50,7 @@ displays a number, child must enter two numbers that either that would complete 
        <div id="inst" >
         
         
-       <h3>A number will appear on the screen</h3> <h3>Enter two different numbers that either add up tothat number</h3>
+       <h3>A number will appear on the screen</h3> <h3>Enter two different numbers that either add up to that number</h3>
             
      
          
@@ -60,7 +60,7 @@ displays a number, child must enter two numbers that either that would complete 
     <div class = "content">
    <button class = "buttons" id = "go" onclick = "xplodeGo()">GO</button>
 <br/>
-    
+    <span class = "message" id = "message" style = "visibility:hidden"></span>
         <div class = "problem" id = "problem" style = "visibility:hidden">
             <span id = "number" ></span>
         <span>=</span>
@@ -71,7 +71,8 @@ displays a number, child must enter two numbers that either that would complete 
            style= "visibility: hidden"/>
         </div>
         <br>
-        <button  class = "buttons"type = "submit" id = "submit" onclick = "solveIt()"style= "visibility: hidden">SUBMIT</button>
+        <button  class = "buttons"type = "submit" id = "submit" onclick = "solveIt()"style= "visibility: hidden">SUBMIT</button>        <button class = "buttons" type = "submit2" id = "submit2" onclick = "xplodeGo()"style= "visibility: hidden">AGAIN</button>
+
     <h1 id = "result"> </h1>
     
     <div class = "scoreBar">
@@ -88,13 +89,21 @@ var number;
   
     function xplodeGo()       //starts the game
     {
+      if (document.contains(document.getElementById("inst")))
+        {
+           removeElement("inst");//remove instructions from page 
+            
+        }  
+        document.getElementById("message").setAttribute('style',"visibility: hidden;");
+        document.getElementById("submit2").setAttribute('style',"visibility: hidden;");
     document.getElementById("problem").setAttribute('style',"visibility: visible;");
          document.getElementById("n1").setAttribute('style',"visibility: visible;");
          document.getElementById("n2").setAttribute('style',"visibility: visible;");
     document.getElementById("number").setAttribute('style',"visibility: visible;");
     document.getElementById("submit").setAttribute('style',"visibility: visible;");
     document.getElementById("go").setAttribute('style',"visibility: hidden;");
-        removeElement("inst"); // remove instuctions from page
+        document.getElementById("n1").value = '';
+        document.getElementById("n2").value = '';
         
         simpleProblem();
     }
@@ -122,16 +131,12 @@ document.getElementById("number").innerHTML = number;
         
        if(parseInt(n1) + parseInt(n2) == number) //if correct
                 {
-                   //give message 
-                    //give point
-                    //go again
-                    alert("got it");
-                  
-                    
-                    score++;
-                    document.getElementById("score").innerHTML = score;
-                    //removeElement("n1");
-                    //removeElement("n2");
+                   
+                  displayMessage("CORRECT");
+                  score++;
+                  document.getElementById("score").innerHTML = score;
+                    document.getElementById("submit2").setAttribute('style',"visibility: visible;");
+                    document.getElementById("submit").setAttribute('style',"visibility: hidden;");
                     
                     //change out textboxs with correct numbers
                     //show message for good job and gettting it correct
@@ -139,22 +144,23 @@ document.getElementById("number").innerHTML = number;
                     
                     
                     
-                    clearIt();
-                    document.getElementById("n1").value = '';
-                    document.getElementById("n2").value = '';
-                    simpleProblem();
+                   
+                    //document.getElementById("n1").value = '';
+                    //document.getElementById("n2").value = '';
+                    
                     
                     
                 }
               else  //incorrect
                   {
-                      alert("Almost, try again!!");
-                  }
+                     displayMessage("INCORRECT");
+                    document.getElementById("n1").focus();
+                }
           
          
          
     }
-    
+ 
     
 function clearIt()
     {
