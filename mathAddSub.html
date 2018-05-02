@@ -42,17 +42,17 @@ possibility  of explaining the problem better if incorrect answer is given
     <!---site contents go inside of here to move with menu-->
     </div>
     <div class = "contentInst" >
-        <h1>Add / Subtract</h1>
+        <h1 class = "headings" >Add / Subtract</h1>
         <br/>
         <br/>
         <br/>
        <div id="inst" >
         
-        <ol>
-       <li>Finish the equation by adding in the correct answer.</li> 
-            <li>Click on a number if you dont know what number it is, and it will be read aloud to you.</li>
+        
+           <h3>Finish the equation by adding in the correct answer.</h3> 
+           <h3>Click on a number if you dont know what number it is, and it will be read aloud to you.</h3>
             
-     </ol>
+     
          
     </div>
     </div>
@@ -62,11 +62,12 @@ possibility  of explaining the problem better if incorrect answer is given
      <br/>
     <br/>
     <br/>
-      <div class = "problem" style = "visibility:hidden">  
+      <div class = "problem" id = "problem"style = "visibility:hidden">  
         <span id = "n1" > </span>
         <span id = "sign"> </span>
         <span id = "n2" > </span> 
           <span id = "equals" >=</span>
+          <span id ="displayAnswer" ></span>
        </div>
     
 
@@ -75,6 +76,7 @@ possibility  of explaining the problem better if incorrect answer is given
     <input class = "TA" type = "text" id = "answer" 
            style= "visibility: hidden"/>
     <button class = "buttons" type = "submit" id = "submit" onclick = "solveIt()"style= "visibility: hidden">SUBMIT</button>
+        <span id = "message"></span><button class = "buttons" type = "submit2" id = "submit2" onclick = "go()"style= "visibility: hidden">AGAIN</button>
     <h1 id = "result"> </h1>
     <br/>
     <br/>
@@ -95,19 +97,23 @@ var sign;
   //functions  
     function go()       //starts the game
     {
-    
-        removeElement("inst");//remove instructions from page
+        
+    if (document.contains(document.getElementById("inst")))
+        {
+           removeElement("inst");//remove instructions from page 
+            
+        }
         
         
         
+        document.getElementById("submit2").setAttribute('style',"visibility: hidden;");
         document.getElementById("answer").setAttribute('style',"visibility: visible;");
-    document.getElementById("n1").setAttribute('style',"visibility: visible;");
-        document.getElementById("sign").setAttribute('style',"visibility: visible;");
-        document.getElementById("n2").setAttribute('style',"visibility: visible;");
-       document.getElementById("equals").setAttribute('style',"visibility: visible;");
-        document.getElementById("submit").setAttribute('style',"visibility: visible;");
-        document.getElementById("go").setAttribute('style',"visibility: hidden;");
         
+        document.getElementById("problem").setAttribute('style',"visibility: visible;");
+        document.getElementById("submit").setAttribute('style',"visibility: visible;");
+        
+        document.getElementById("go").setAttribute('style',"visibility: hidden;");
+        document.getElementById("displayAnswer").innerHTML = '';
         simpleProblem();
         }
     
@@ -143,36 +149,43 @@ sign = signArray[Math.floor(Math.random()*signArray.length)];
         
        if(sign == "+") //if addition
           {
-          // alert(n1);
-           //   alert(n2);
+          
             if(n1 + n2 == answer) //if correct
                 {
-                   score++;
+                    score++;
+                    document.getElementById("displayAnswer").innerHTML = answer;
                     document.getElementById("score").innerHTML = score;
                     document.getElementById("answer").value = '';
-                    clearIt();
-                    simpleProblem();
                     
+                    //need to display message for correct and prompt to continue
                     
-                }
+                    document.getElementById("answer").setAttribute('style',"visibility: hidden;");
+                   document.getElementById("submit").setAttribute('style',"visibility: hidden;");
+                    document.getElementById("submit2").setAttribute('style',"visibility: visible;");
+                    
+                  }
               else  //incorrect
                   {
-                      alert("Almost, try again!!");
+                      document.getElementById("message").innerHTML = "try again";
                   }
           
           }
           else //then subtract
           {
-              //alert(n1);
-              //alert(n2);
+              
             if(n1 - n2 == answer)
                {
                 score++;
                    document.getElementById("score").innerHTML = score;
                    document.getElementById("answer").value = '';
-                  clearIt(); 
-               simpleProblem();
+                   document.getElementById("displayAnswer").innerHTML = answer;
                    
+                    //need to display message for correct and prompt to continue
+                    
+                   //hide until they click continue
+                     document.getElementById("answer").setAttribute('style',"visibility: hidden;");
+                   document.getElementById("submit").setAttribute('style',"visibility: hidden;"); document.getElementById("submit2").setAttribute('style',"visibility: visible;");
+              
                    
                }
                else //wrong
@@ -183,6 +196,10 @@ sign = signArray[Math.floor(Math.random()*signArray.length)];
           }
         
     }
+    
+    
+    
+
     
     
 function clearIt()

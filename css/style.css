@@ -26,10 +26,11 @@ body{
             margin: auto;
             text-align: center;
     font-size: 25px;
+    font-family: "Arial";
             }
-}
 
-/*  for text box appearanes */
+
+/*  for text box appearanes 
 .TA
 {
   
@@ -42,6 +43,17 @@ body{
     font-size: 50px;  
     
 }
+*/
+
+
+
+#inst{
+    font-family: "Arial";
+    position: relative;
+    top: 6px;
+}
+
+
 
 /* for buttons to look better*/
 .buttons {
@@ -65,8 +77,14 @@ body{
 }
 
 
-
-
+/* for messages */
+#message {
+    font-family: "Arial";
+            font-size:100px;
+            margin-top: 0;
+            margin-bottom: .5em;
+    
+}
 
 
 /* for sentences */
@@ -123,7 +141,7 @@ body{
 
 /* for simple math */
 .problem{
-    
+    font-family: "Arial";
     font-size: 100px;
 }
 

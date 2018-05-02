@@ -41,16 +41,18 @@ randomly generated sentence for practice reading
     <!---site contents go inside of here-->
         </div>
     <div class = "contentInst">
-        <h1>Silly Sentence</h1>
-   
+        <h1 class = "headings">Silly Sentence</h1>
+        <br>
+        <br>
+        <br>
         <div id="inst">
-        <ol>
-       <li>Have your child practice reading these sentences.</li> 
-            <li>You can choose simple sentences bu clicking simple button or silly sentences by clicing the silly button.</li>
-            If you child does not know a word, have them click on it and it will be read to them
+        
+       <h3>Have your child practice reading these sentences.</h3> 
+            <h3>You can choose simple sentences bu clicking simple button or silly sentences by clicing the silly button.</h3>
+            <h3>If you child does not know a word, have them click on it and it will be read to them</h3>
             
             
-     </ol>
+    
          <button class = "buttons" type = "submit" id = "instSub" onclick = "removeElement('inst');">ok lets play</button>
         </div>
         
@@ -95,9 +97,7 @@ function buildSimpleSentence()       //starts the game
     
     document.getElementById("simple").setAttribute('style',"visibility: visible;");
     document.getElementById("silly").setAttribute('style',"visibility: hidden;");
-    
-        
-     document.getElementById("simArt").innerHTML = articles[Math.floor(Math.random() * articles.length)];
+    document.getElementById("simArt").innerHTML = articles[Math.floor(Math.random() * articles.length)];
     document.getElementById("simAdj").innerHTML = adjectives[Math.floor(Math.random() * adjectives.length)];
     document.getElementById("simNoun").innerHTML = nouns[Math.floor(Math.random() * nouns.length)];
     document.getElementById("simVerb").innerHTML = verbs[Math.floor(Math.random() * verbs.length)];

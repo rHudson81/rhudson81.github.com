@@ -45,15 +45,17 @@
     
     </div>
     <div class = "contentInst">
-        <h1>Farm Animal Hang Man</h1>
-        
+        <h1 class = "headings">Name That Farm Animal</h1>
+        <br>
+        <br>
+        <br>
         <div id="inst">
-        <ol>
-       <li>Have your child try and spell the animal.</li> 
+
+            <h3>Have your child try and spell the animal.</h3> 
             
             
-            <li>Enter one letter at a time, and press try it to see if it is correct.</li>
-     </ol>
+            <h3>Enter one letter at a time, and press try it to see if it is correct.</h3>
+     
          <button class = "buttons" type = "submit" id = "instSub" onclick = "removeElement('inst');">ok lets play</button>
         </div>
     </div>
@@ -100,7 +102,7 @@ var word = getWord(farmAnimals);
 var triesLeft = word.length + 4;
 
   //set first image base on how many trieds left  
-document.getElementById("triesImage").innerHTML= "<img src = 'css/" + triesLeft + ".png'>";
+//document.getElementById("triesImage").innerHTML= "<img src = 'css/" + triesLeft + ".png'>";
     
 //set the pic of the farm animal
  document.getElementById("image").innerHTML= "<img src = 'css/" + word + ".png'>";   
@@ -160,8 +162,17 @@ var blankWord = makeBlanks(cloneArray)
     function checkLetter(cloneBlank, cloneArray)
     {
         
+        //if box is empty
+        
+           
         var length = cloneBlank.length;
         var letter  = document.getElementById("attempt").value;
+        if(letter == " ")
+           {
+           alert("empty");
+           
+           }else{
+        
         letter = letter.trim();
         letter = letter.toLowerCase();
         var tick = 0;//for if the letter was success
@@ -207,7 +218,7 @@ var blankWord = makeBlanks(cloneArray)
         document.getElementById("attemptsLeft").innerHTML = triesLeft;
         
         //to change hangman graphic
-        document.getElementById("triesImage").innerHTML= "<img src = 'css/" + triesLeft + ".png'>";
+        //document.getElementById("triesImage").innerHTML= "<img src = 'css/" + triesLeft + ".png'>";
         
         
         //if out of tries
@@ -216,7 +227,7 @@ var blankWord = makeBlanks(cloneArray)
                 alert("sorry you didnt get it");
                 word = getWord("farnAnimals");
             }
-        
+    }
     }
     
     
@@ -236,7 +247,7 @@ var blankWord = makeBlanks(cloneArray)
     element.parentNode.removeChild(element);
 
     //and make everything else visible
-     document.getElementById("triesImage").setAttribute('style',"visibility: visible;");
+     //document.getElementById("triesImage").setAttribute('style',"visibility: visible;");
         document.getElementById("image").setAttribute('style',"visibility: visible;");
         document.getElementById("word").setAttribute('style',"visibility: visible;");
         //document.getElementById("word2").setAttribute('style',"visibility: visible;");
