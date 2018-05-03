@@ -81,7 +81,7 @@ body{
 {  
    font-family:"Arial";  
    font-size: 100px;
-    width: 80px     
+    width: 120px     
 }
 
 
@@ -89,12 +89,17 @@ body{
     
     font-family:"Arial";  
    font-size: 100px;
-    width: 80px
+    width: 80px;
+       
     
 }
 
-
-
+/* to align the entry box and buttons for animal game */
+.entry {
+    width: 50%; 
+    margin:auto; 
+    text-align: center;
+}
 
 
 
