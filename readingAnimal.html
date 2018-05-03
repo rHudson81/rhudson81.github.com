@@ -35,13 +35,7 @@
 
     
 
-    <div id="main">
     
-    
-    
-    <!---site contents go inside of here if want to move when menu come up-->
-    
-    </div>
     <div class = "contentInst">
         <h1 class = "headings">Name The Animal</h1>
         <br>
@@ -55,7 +49,7 @@
             <h3>Enter one letter at a time, and press try it to see if it is correct.</h3>
             <h3>click on the animal!</h3>
      
-         <button class = "buttons" type = "submit" id = "instSub" onclick = "removeElement('inst');">ok lets play</button>
+         <button class = "buttons" type = "submit" id = "instSub" onclick = "Go()">ok lets play</button>
         </div>
     </div>
     
@@ -66,9 +60,9 @@
         <span class = "message" id = "message" style = "visibility:hidden"></span>
       <h2 id = "word" style="visibility:hidden"></h2> 
        
-           <input type= "text" id = "attempt" required autofocus style="visibility:hidden"  >
+           <input class = "letters" type= "text" id = "attempt"  autofocus style="visibility:hidden"  maxlength = "1" >
         <button  class = "buttons" type = "submit" id = "submit" onclick = "checkLetter(cloneBlank, cloneArray)" style="visibility:hidden">Try it</button>
-        <button  class = "buttons" type = "submit" id = "submit2" onclick = "alert('need to start again')" style="visibility:hidden">PLAY AGAIN</button>
+        <button  class = "buttons" type = "submit" id = "submit2" onclick = "Go()" style="visibility:hidden">PLAY AGAIN</button>
            
         
        
@@ -88,52 +82,67 @@
     
 <script>
     
-
-//get one word for databse
-var word = getWord(Animals);
-
-//for attempts
-var triesLeft = word.length + 4;
-//copy it
-var clone = word;
-    
-//split string into array
-var cloneArray = clone.split("");
-
-//make copy of array before splitting to compare to
-var cloneBlank = cloneArray.slice(0);
-
-//replace all letters with blanks
-var blankWord = makeBlanks(cloneArray)
+var word;
+    var triesLeft;
+    var clone;
+    var cloneArray;
+    var cloneBlank
+    var blankWord;
 
 
 
-//set the pic of the  animal
-document.getElementById("image").innerHTML= "<img src = 'css/" + word + ".png'>"; 
-    
-document.getElementById("word").innerHTML = blankWord.join(" ");   
-//show tries left
-document.getElementById("attemptsLeft").innerHTML = triesLeft;
 
 
-  
+ 
  
   
 
     
 //functions
   
-    
-  
-    
-    
-    function getWord(Animals)
-    { 
-         
-      word = Animals[Math.floor(Math.random() * Animals.length)];
-       word = word.toLowerCase();
-        return word;
+  function Go()
+    {
+        
+        if (document.contains(document.getElementById("inst")))
+        {
+           removeElement("inst");//remove instructions from page 
+
+        }
+        makeGame();
+        
     }
+  
+    function makeGame()
+    {
+                //get one word for databse
+        word = Animals[Math.floor(Math.random() * Animals.length)];
+        word = word.toLowerCase();
+
+        //for attempts
+        triesLeft = word.length + 4;
+
+
+        //copy it
+        clone = word;
+        
+        //set the pic of the  animal
+        document.getElementById("image").innerHTML= "<img src = 'css/" + word + ".png'>"; 
+
+        //show tries left
+        document.getElementById("attemptsLeft").innerHTML = triesLeft;
+
+                //split string into array
+        cloneArray = clone.split("");
+
+        //make copy of array before splitting to compare to
+        cloneBlank = cloneArray.slice(0);
+
+        //replace all letters with blanks
+        blankWord = makeBlanks(cloneArray);
+        document.getElementById("word").innerHTML = blankWord.join(" ");  
+    }
+    
+    
     
     
     function makeBlanks(cloneArray)

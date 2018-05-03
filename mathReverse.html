@@ -17,7 +17,8 @@ displays a number, child must enter two numbers that either that would complete 
 <meta name="viewport" content="width=device-width, initial-scale=1">
  <link rel="stylesheet" type="text/css" href="css/style.css">
 <script src="private/jFunctions.js"> </script> 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src='https://code.responsivevoice.org/responsivevoice.js'></script>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script></script>
     
 </head>
 
@@ -34,13 +35,7 @@ displays a number, child must enter two numbers that either that would complete 
 
     
 
-    <div id="main">
     
-   
-    
-    <!---site contents go inside of here to move with menu-->
-        
-        </div>
     
     <div class = "contentInst" >
         <h1 class = "headings">Backwards Math</h1>
@@ -64,10 +59,10 @@ displays a number, child must enter two numbers that either that would complete 
         <div class = "problem" id = "problem" style = "visibility:hidden">
             <span id = "number" ></span>
         <span>=</span>
-        <input  type = "text" id = "n1" 
+        <input  class = "numbers" type = "text" id = "n1" maxlength = "2" 
            style= "visibility: hidden"/>
      <span > +</span>
-        <input  type = "text" id = "n2" 
+        <input  class = "numbers" type = "text" id = "n2" maxlength = "2"
            style= "visibility: hidden"/>
         </div>
         <br>
@@ -133,28 +128,29 @@ document.getElementById("number").innerHTML = number;
                 {
                    
                   displayMessage("CORRECT");
+                    responsiveVoice.speak("good job", "US English Female");
                   score++;
                   document.getElementById("score").innerHTML = score;
                     document.getElementById("submit2").setAttribute('style',"visibility: visible;");
                     document.getElementById("submit").setAttribute('style',"visibility: hidden;");
                     
+                    document.getElementById("submit2").setAttribute('style',"visibility: visible;");
                     //change out textboxs with correct numbers
                     //show message for good job and gettting it correct
-                    
-                    
-                    
-                    
-                   
-                    //document.getElementById("n1").value = '';
-                    //document.getElementById("n2").value = '';
-                    
                     
                     
                 }
               else  //incorrect
                   {
                      displayMessage("INCORRECT");
+                      responsiveVoice.speak("sorry, try again", "US English Female");
+                      document.getElementById("n1").value = '';
+                    document.getElementById("n2").value = '';
                     document.getElementById("n1").focus();
+                     // document.getElementById("submit2").setAttribute('style',"visibility: visible;");
+                   // document.getElementById("submit").setAttribute('style',"visibility: hidden;");
+                    
+                   // document.getElementById("submit2").setAttribute('style',"visibility: visible;");
                 }
           
          

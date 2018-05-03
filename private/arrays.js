@@ -9,4 +9,4 @@ var verbs = ["hops", "looks", "moves", "breaks", "cooks", "falls", "flies", "dan
     
 var adjectives = ["striped", "ugly", "red", "old", "brave","pink", "shiny", "sad", "gentle", "funny", "fast", "shy", "happy", "slow", "big", "young", "scary", "pretty", "yellow", "scared", "dull", "spotted", "little","purple", "blue", "green", "black","white"];
 
-var Animals = ["cat", "dog", "chicken", "pig", "horse", "cow", "rabbit", "sheep", "duck"]; 
+var Animals = ["cat", "dog", "chicken", "pig", "horse", "cow", "rabbit", "sheep", "duck", "fish","bear","owl","deer","frog","monkey","panda"]; 

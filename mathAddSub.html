@@ -18,7 +18,8 @@ possibility  of explaining the problem better if incorrect answer is given
 <meta name="viewport" content="width=device-width, initial-scale=1">
  <link rel="stylesheet" type="text/css" href="css/style.css">
 <script src="private/jFunctions.js"> </script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src='https://code.responsivevoice.org/responsivevoice.js'></script>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     
 </head>
 
@@ -35,12 +36,7 @@ possibility  of explaining the problem better if incorrect answer is given
 
     
 
-    <div id="main">
     
-    
-    
-    <!---site contents go inside of here to move with menu-->
-    </div>
     <div class = "contentInst" >
         <h1 class = "headings" >Add / Subtract</h1>
         <br/>
@@ -67,15 +63,15 @@ possibility  of explaining the problem better if incorrect answer is given
         <span id = "n1" > </span>
         <span id = "sign"> </span>
         <span id = "n2" > </span> 
-          <span id = "equals" >=</span>
+          <span>=</span>
           <span id ="displayAnswer" ></span>
        </div>
     
 
     <button class = "buttons" id = "go" onclick = "go()">GO</button>
 <br/>
-    <input class = "TA" type = "text" id = "answer" 
-           style= "visibility: hidden"/>
+    <input class = "numbers" type = "text" id = "answer" 
+           style= "visibility: hidden" maxlength = "1"/>
     <button class = "buttons" type = "submit" id = "submit" onclick = "solveIt()"style= "visibility: hidden">SUBMIT</button>
         <button class = "buttons" type = "submit2" id = "submit2" onclick = "go()"style= "visibility: hidden">AGAIN</button>
     <h1 id = "result"> </h1>
@@ -145,21 +141,16 @@ sign = signArray[Math.floor(Math.random()*signArray.length)];
         
        var answer =  document.getElementById("answer").value;
         
-        
-       if(sign == "+") //if addition
-          {
-          
-            if(n1 + n2 == answer) //if correct
+        if(n1 + n2 == answer || n1-n2 == answer) //if correct
                 {
                     score++;
-                    document.getElementById("displayAnswer").innerHTML = answer;
                     document.getElementById("score").innerHTML = score;
                     document.getElementById("answer").value = '';
+                    document.getElementById("displayAnswer").innerHTML = answer;
                     
-                    //need to display message for correct and prompt to continue
-                    
-                   //display message for correct
-            displayMessage("CORRECT"); 
+                    //display message for correct
+                    displayMessage("CORRECT");
+                    responsiveVoice.speak("good job", "US English Female");
                     
                     document.getElementById("answer").setAttribute('style',"visibility: hidden;");
                    document.getElementById("submit").setAttribute('style',"visibility: hidden;");
@@ -168,40 +159,12 @@ sign = signArray[Math.floor(Math.random()*signArray.length)];
                   }
               else  //incorrect
                   {
-                      document.getElementById("message").innerHTML = "try again";
+                      displayMessage("TRY AGAIN");
+                      responsiveVoice.speak("sorry, try again", "US English Female");
+                      document.getElementById("answer").value = "";
+                      document.getElementById("answer").focus();
                   }
-          
           }
-          else //then subtract
-          {
-              
-            if(n1 - n2 == answer)
-               {
-                score++;
-                   document.getElementById("score").innerHTML = score;
-                   document.getElementById("answer").value = '';
-                   document.getElementById("displayAnswer").innerHTML = answer;
-                   
-                    //need to display message for correct and prompt to continue
-                           //display message for correct
-            document.getElementById("message").setAttribute('style',"visibility: visible;");
-            document.getElementById("message").innerHTML = "CORRECT";
-                   //hide until they click continue
-                     document.getElementById("answer").setAttribute('style',"visibility: hidden;");
-                   displayMessage("CORRECT");
-              
-                   
-               }
-               else //wrong
-               {
-                displayMessage("TRY AGAIN");
-                   document.getElementById("answer").value = "";
-                   document.getElementById("answer").focus();
-               
-               }
-          }
-        
-    }
     
     
     
