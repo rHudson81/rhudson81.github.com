@@ -39,8 +39,7 @@
     <div class = "contentInst">
         <h1 class = "headings">Name The Animal</h1>
         <br>
-        <br>
-        <br>
+        
         <div id="inst">
 
             <h3>Have your child try and spell the animal.</h3> 
@@ -110,6 +109,9 @@ var word;
 
         }
         makeGame();
+        document.getElementById("submit").setAttribute('style',"visibility: visible;");
+        document.getElementById("submit2").setAttribute('style',"visibility: hidden;");
+        document.getElementById("attempt").setAttribute('style',"visibility: visible;");
         
     }
   
@@ -204,6 +206,7 @@ var word;
                     responsiveVoice.speak("Congratulations, please play again", "US English Female");
                 document.getElementById("submit2").setAttribute('style',"visibility: visible;");
                 document.getElementById("submit").setAttribute('style',"visibility: hidden;");
+                    document.getElementById("attempt").setAttribute('style',"visibility: hidden;");
                 }
 
 
