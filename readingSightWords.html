@@ -59,14 +59,16 @@ displays  one sight word at a time, child is to read the sight word and say it, 
     <div class = "content">
         
       <h2 id = "word"> </h2>  
-        
+      <span class = "message" id = "message" style = "visibility:hidden"></span>  
       
     
    <input type = "image" src = "css/yes.png" id ="correct" onclick = "correct()"  style="visibility:hidden" />
         <button class = "buttons" id = "go" onclick = "go()">GO</button>
+        <input type = "image" src = "css/no.png" id ="wrong" onclick = "wrong()" style="visibility:hidden"/><br>
+        <button class = "buttons" type = "submit2" id = "submit2" onclick = "go()"style= "visibility: hidden">AGAIN</button>
         
 
-        <input type = "image" src = "css/no.png" id ="wrong" onclick = "wrong()" style="visibility:hidden"/>
+        
 
         <br/>
         <br/>
@@ -87,18 +89,29 @@ var perfect = "PERFECT";
  
 function go()       //starts the game
     {
-       
-removeElement("inst");
+       current = 0;
+        currentScore = 0;
+        var needsWork = [];
+if (document.contains(document.getElementById("inst")))
+        {
+           removeElement("inst");//remove instructions from page 
+            
+        }
+     document.getElementById("word").style.fontSize = "100px";   
+     
         
         
     document.getElementById("correct").setAttribute('style',"visibility: visible;");
     document.getElementById("wrong").setAttribute('style',"visibility: visible;");
     document.getElementById("word").innerHTML = wordList[current];    
     document.getElementById("go").setAttribute('style',"visibility: hidden;");
+        document.getElementById("message").setAttribute('style',"visibility: hidden;");
         }
     
 function correct()
-    { current++;
+    { 
+        
+        current++;
         currentScore++;
      if(current == wordList.length) //if at end of videos
      {
@@ -131,27 +144,35 @@ function wrong()
 function displayResults()
     {
         
-        alert("you scored a " + Math.round(currentScore/wordList.length * 100) + "%");
-    document.getElementById("word").innerHTML = needsWork;
+        displayMessage("you scored a " + Math.round(currentScore/wordList.length * 100) + "%");
+        document.getElementById("word").style.fontSize = "medium";
+        document.getElementById("word").innerHTML = needsWork;
         
         
         
         if(currentScore == wordList.length ) //if got all correct
             {
-       document.getElementById("word").innerHTML = perfect;
-
-        document.getElementById("correct").setAttribute('style',"visibility: hidden;"); //hide correct button
-        document.getElementById("wrong").setAttribute('style',"visibility: hidden;");//hide wrong button
+        displayMessage("PERFECT");
+                responsiveVoice.speak("PERFECT", "US English Female");
             }
+         document.getElementById("correct").setAttribute('style',"visibility: hidden;"); //hide correct button
+         document.getElementById("wrong").setAttribute('style',"visibility: hidden;");//hide wrong button
+        document.getElementById("submit2").setAttribute('style',"visibility: visible;");//hide wrong button
         
     }
-    
+   
+        
+        
+        
+        
+        
+        
    function removeElement(elementId)
-{
-// Removes an element from the document
-var element = document.getElementById(elementId);
-element.parentNode.removeChild(element);
-}   
+    {
+        // Removes an element from the document
+        var element = document.getElementById(elementId);
+        element.parentNode.removeChild(element);
+    }   
   
         
              
