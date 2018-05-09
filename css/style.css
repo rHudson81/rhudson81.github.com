@@ -90,15 +90,24 @@ body{
     font-family:"Arial";  
    font-size: 100px;
     width: 80px;
+    margin: auto;
        
     
 }
 
 /* to align the entry box and buttons for animal game */
 .entry {
-    width: 50%; 
+    width: 25%; 
     margin:auto; 
     text-align: center;
+}
+
+@media(max-width:775px){
+    
+   .entry {
+    width: 50%; 
+    
+} 
 }
 
 
