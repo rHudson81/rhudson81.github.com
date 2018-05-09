@@ -246,7 +246,7 @@ background-color: #00FF00;
 
 .triesImage {
     
-    max-width:50px;
+  max-width:50px;
   max-height:15px;
   width: auto;
   height: auto;
@@ -257,8 +257,8 @@ background-color: #00FF00;
 
 img {
   
-  max-width:600px;
-  max-height:300px;
+  max-width:400px;
+  max-height:200px;
   width: auto;
   height: auto;
 }
