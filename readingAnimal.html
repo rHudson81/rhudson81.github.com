@@ -59,8 +59,11 @@
         <span class = "message" id = "message" style = "visibility:hidden"></span>
       <h2 id = "word" style="visibility:hidden"></h2> 
        <div class = "entry">
-            <input class = "letters" type= "text" id = "attempt"  autofocus style="visibility:hidden"  maxlength = "1" >
-            <button  class = "buttons" type = "submit" id = "submit" onclick = "checkLetter(cloneBlank, cloneArray)" style="visibility:hidden">Try it</button>
+            <!-- <input class = "letters" type= "text" id = "attempt"  autofocus style="visibility:hidden"  maxlength = "1" >
+            
+       <button  class = "buttons" type = "submit" id = "submit" onclick = "checkLetter(cloneBlank, cloneArray)" style="visibility:hidden">Try it</button>
+-->
+           
             <button  class = "buttons" type = "submit" id = "submit2" onclick = "Go()" style="visibility:hidden">PLAY AGAIN</button>
         </div>
            
@@ -81,6 +84,18 @@
   
     
 <script>
+    
+ document.onkeydown = function(event)
+ {  //get the key pressed
+    var key = String.fromCharCode(event.keyCode);
+     
+     //make it lower
+     Key = key.toLowerCase();
+     
+     //call function
+     checkLetter(cloneBlank,cloneArray, Key);
+ }
+    
     
 var word;
     var triesLeft;
@@ -109,9 +124,9 @@ var word;
 
         }
         makeGame();
-        document.getElementById("submit").setAttribute('style',"visibility: visible;");
+       // document.getElementById("submit").setAttribute('style',"visibility: visible;");
         document.getElementById("submit2").setAttribute('style',"visibility: hidden;");
-        document.getElementById("attempt").setAttribute('style',"visibility: visible;");
+        //document.getElementById("attempt").setAttribute('style',"visibility: visible;");
         
     }
   
@@ -159,20 +174,15 @@ var word;
         
     }
     
-    function checkLetter(cloneBlank, cloneArray)
+    function checkLetter(cloneBlank, cloneArray, letter)
     {
         
         //if box is empty
         
            
         var length = cloneBlank.length;
-        var letter  = document.getElementById("attempt").value;
-        if(letter == " ")
-           {
-           displayMessage("enter a letter!");
-               responsiveVoice.speak("sorry, enter a letter", "US English Female");
-           
-           }else{
+        //var letter  = document.getElementById("attempt").value;
+        
         
                 letter = letter.trim();
                 letter = letter.toLowerCase();
@@ -189,13 +199,16 @@ var word;
                             
                         tick = 1; //mark it
                     }
-                    document.getElementById("attempt").value = "";
+                    
+                    //document.getElementById("attempt").value = "";
                 }
 
+               
 
                 if(tick == 0) //if letter isnt found  decrement triesleft
                 {
                     triesLeft --;
+                    responsiveVoice.speak("close, please try a different letter", "US English Female");
                 }
 
 
@@ -205,8 +218,8 @@ var word;
                     displayMessage("WINNER");
                     responsiveVoice.speak("Congratulations, please play again", "US English Female");
                 document.getElementById("submit2").setAttribute('style',"visibility: visible;");
-                document.getElementById("submit").setAttribute('style',"visibility: hidden;");
-                    document.getElementById("attempt").setAttribute('style',"visibility: hidden;");
+               // document.getElementById("submit").setAttribute('style',"visibility: hidden;");
+                    //document.getElementById("attempt").setAttribute('style',"visibility: hidden;");
                 }
 
 
@@ -225,8 +238,8 @@ var word;
                     responsiveVoice.speak("sorry, please try again", "US English Female");
                    // word = getWord("Animals");
                 }
-               document.getElementById("attempt").focus();
-                }
+              // document.getElementById("attempt").focus();
+                
     }
     
     
@@ -250,8 +263,8 @@ var word;
         document.getElementById("image").setAttribute('style',"visibility: visible;");
         document.getElementById("word").setAttribute('style',"visibility: visible;");
         //document.getElementById("word2").setAttribute('style',"visibility: visible;");
-        document.getElementById("attempt").setAttribute('style',"visibility: visible;");
-        document.getElementById("submit").setAttribute('style',"visibility: visible;");
+        //document.getElementById("attempt").setAttribute('style',"visibility: visible;");
+        //document.getElementById("submit").setAttribute('style',"visibility: visible;");
         document.getElementById("bottomTries").setAttribute('style',"visibility: visible;");
 
     }   
