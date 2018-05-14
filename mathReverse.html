@@ -66,7 +66,9 @@ displays a number, child must enter two numbers that either that would complete 
            style= "visibility: hidden"/>
         </div>
         <br>
-        <button  class = "buttons"type = "submit" id = "submit" onclick = "solveIt()"style= "visibility: hidden">SUBMIT</button>        <button class = "buttons" type = "submit2" id = "submit2" onclick = "xplodeGo()"style= "visibility: hidden">AGAIN</button>
+       <!-- <button  class = "buttons"type = "submit" id = "submit" onclick = "solveIt()"style= "visibility: hidden">SUBMIT</button>  
+-->
+        <button class = "buttons" type = "submit2" id = "submit2" onclick = "xplodeGo()"style= "visibility: hidden">AGAIN</button>
 
     <h1 id = "result"> </h1>
     
@@ -74,6 +76,17 @@ displays a number, child must enter two numbers that either that would complete 
         <h2>Score is:</h2><h2 id = "score">0</h2></div> 
 </div>
 <script>
+    
+    
+document.onkeydown = function(event)
+ {  
+    var code = event.keyCode;
+    if(code === 13)
+       {
+       
+       solveIt();
+       }
+}    
     
 var score = 0;
 var number;
@@ -95,10 +108,11 @@ var number;
          document.getElementById("n1").setAttribute('style',"visibility: visible;");
          document.getElementById("n2").setAttribute('style',"visibility: visible;");
     document.getElementById("number").setAttribute('style',"visibility: visible;");
-    document.getElementById("submit").setAttribute('style',"visibility: visible;");
+    //document.getElementById("submit").setAttribute('style',"visibility: visible;");
     document.getElementById("go").setAttribute('style',"visibility: hidden;");
         document.getElementById("n1").value = '';
         document.getElementById("n2").value = '';
+        document.getElementById("n1").focus();
         
         simpleProblem();
     }
@@ -132,7 +146,7 @@ document.getElementById("number").innerHTML = number;
                   score++;
                   document.getElementById("score").innerHTML = score;
                     document.getElementById("submit2").setAttribute('style',"visibility: visible;");
-                    document.getElementById("submit").setAttribute('style',"visibility: hidden;");
+                    //document.getElementById("submit").setAttribute('style',"visibility: hidden;");
                     
                     document.getElementById("submit2").setAttribute('style',"visibility: visible;");
                     //change out textboxs with correct numbers

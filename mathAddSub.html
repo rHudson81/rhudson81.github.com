@@ -73,7 +73,7 @@ possibility  of explaining the problem better if incorrect answer is given
     <button class = "buttons" id = "go" onclick = "go()">GO</button>
 <br/>
     
-    <button class = "buttons" type = "submit" id = "submit" onclick = "solveIt()"style= "visibility: hidden">SUBMIT</button>
+    <!--<button class = "buttons" type = "submit" id = "submit" onclick = "solveIt()"style= "visibility: hidden">SUBMIT</button> -->
         <button class = "buttons" type = "submit2" id = "submit2" onclick = "go()"style= "visibility: hidden">AGAIN</button>
     <h1 id = "result"> </h1>
     <br/>
@@ -83,6 +83,19 @@ possibility  of explaining the problem better if incorrect answer is given
         <h2>Score is:</h2><h2 id = "score">0</h2></div> 
 
 <script>
+    
+    
+document.onkeydown = function(event)
+ {  
+    var code = event.keyCode;
+    if(code === 13)
+       {
+       
+       solveIt();
+       }
+}
+    
+    
     
 var signArray = ["+","-"] ;
 var score = 0;
@@ -106,7 +119,7 @@ var sign;
         document.getElementById("answer").setAttribute('style',"visibility: visible;");
         
         document.getElementById("problem").setAttribute('style',"visibility: visible;");
-        document.getElementById("submit").setAttribute('style',"visibility: visible;");
+        //document.getElementById("submit").setAttribute('style',"visibility: visible;");
         
         document.getElementById("go").setAttribute('style',"visibility: hidden;");
         document.getElementById("displayAnswer").innerHTML = '';
@@ -137,36 +150,36 @@ sign = signArray[Math.floor(Math.random()*signArray.length)];
        document.getElementById("answer").focus(); 
     }
     
-   function solveIt() //when button is pressed
-    { 
-        
-       var answer =  document.getElementById("answer").value;
-        
-        if(n1 + n2 == answer || n1-n2 == answer) //if correct
-                {
-                    score++;
-                    document.getElementById("score").innerHTML = score;
-                    document.getElementById("answer").value = '';
-                    document.getElementById("displayAnswer").innerHTML = answer;
-                    
-                    //display message for correct
-                    displayMessage("CORRECT");
-                    responsiveVoice.speak("good job", "US English Female");
-                    
-                    document.getElementById("answer").setAttribute('style',"visibility: hidden;");
-                   document.getElementById("submit").setAttribute('style',"visibility: hidden;");
-                    document.getElementById("submit2").setAttribute('style',"visibility: visible;");
-                    
-                  }
-              else  //incorrect
-                  {
-                      displayMessage("TRY AGAIN");
-                      responsiveVoice.speak("sorry, try again", "US English Female");
-                      document.getElementById("answer").value = "";
-                      document.getElementById("answer").focus();
-                  }
-          }
-    
+function solveIt() //when button is pressed
+{ 
+
+   var answer =  document.getElementById("answer").value;
+
+    if(n1 + n2 == answer || n1-n2 == answer) //if correct
+            {
+                score++;
+                document.getElementById("score").innerHTML = score;
+                document.getElementById("answer").value = '';
+                document.getElementById("displayAnswer").innerHTML = answer;
+
+                //display message for correct
+                displayMessage("CORRECT");
+                responsiveVoice.speak("good job", "US English Female");
+
+                document.getElementById("answer").setAttribute('style',"visibility: hidden;");
+               //document.getElementById("submit").setAttribute('style',"visibility: hidden;");
+                document.getElementById("submit2").setAttribute('style',"visibility: visible;");
+
+              }
+          else  //incorrect
+              {
+                  displayMessage("TRY AGAIN");
+                  responsiveVoice.speak("sorry, try again", "US English Female");
+                  document.getElementById("answer").value = "";
+                  document.getElementById("answer").focus();
+              }
+      }
+
     
     
 

@@ -89,9 +89,15 @@
  {  //get the key pressed
     var key = String.fromCharCode(event.keyCode);
      var code = event.keyCode;
-     
+    
      //make it lower
      Key = key.toLowerCase();
+     
+     
+     
+     
+     
+     
      
      //call function
      checkLetter(cloneBlank,cloneArray, Key, code);
@@ -179,11 +185,7 @@ var word;
     {
         //alert(keyCode);
         //if non letter is pressed
-        if( keyCode < 65 || keyCode > 90)
-           {
-           responsiveVoice.speak("Please enter a letter", "US English Female");
-           return;
-           }
+        
         
         
         
@@ -224,6 +226,10 @@ var word;
                 {
                     displayMessage("WINNER");
                     responsiveVoice.speak("Congratulations, please play again", "US English Female");
+                    
+                    
+                    
+                    
                 document.getElementById("submit2").setAttribute('style',"visibility: visible;");
                
                 }
@@ -238,9 +244,13 @@ var word;
                 {
                     displayMessage("sorry");
                     responsiveVoice.speak("sorry, please try again", "US English Female");
-                   // word = getWord("Animals");
+                    
+                    
+                    
+                    
+                   
                 }
-              // document.getElementById("attempt").focus();
+              
                 
     }
     
