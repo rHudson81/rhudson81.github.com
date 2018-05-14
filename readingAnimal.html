@@ -45,7 +45,7 @@
             <h3>Have your child try and spell the animal.</h3> 
             
             
-            <h3>Enter one letter at a time, and press try it to see if it is correct.</h3>
+            <h3>Enter one letter at a time.</h3>
             <h3>click on the animal!</h3>
      
          <button class = "buttons" type = "submit" id = "instSub" onclick = "Go()">ok lets play</button>
@@ -88,12 +88,13 @@
  document.onkeydown = function(event)
  {  //get the key pressed
     var key = String.fromCharCode(event.keyCode);
+     var code = event.keyCode;
      
      //make it lower
      Key = key.toLowerCase();
      
      //call function
-     checkLetter(cloneBlank,cloneArray, Key);
+     checkLetter(cloneBlank,cloneArray, Key, code);
  }
     
     
@@ -174,19 +175,24 @@ var word;
         
     }
     
-    function checkLetter(cloneBlank, cloneArray, letter)
+    function checkLetter(cloneBlank, cloneArray, letter, keyCode)
     {
+        //alert(keyCode);
+        //if non letter is pressed
+        if( keyCode < 65 || keyCode > 90)
+           {
+           responsiveVoice.speak("Please enter a letter", "US English Female");
+           return;
+           }
         
-        //if box is empty
         
-           
+        
+        
+        
         var length = cloneBlank.length;
-        //var letter  = document.getElementById("attempt").value;
-        
-        
-                letter = letter.trim();
-                letter = letter.toLowerCase();
-                var tick = 0;//for if the letter was success
+        letter = letter.trim();
+        letter = letter.toLowerCase();
+        var tick = 0;//for if the letter was success
 
                 for(var x = 0; x < length; x++)
                 {
@@ -200,7 +206,6 @@ var word;
                         tick = 1; //mark it
                     }
                     
-                    //document.getElementById("attempt").value = "";
                 }
 
                
@@ -209,6 +214,8 @@ var word;
                 {
                     triesLeft --;
                     responsiveVoice.speak("close, please try a different letter", "US English Female");
+                }else{
+                    responsiveVoice.speak("good job, keep going", "US English Female");
                 }
 
 
@@ -218,13 +225,8 @@ var word;
                     displayMessage("WINNER");
                     responsiveVoice.speak("Congratulations, please play again", "US English Female");
                 document.getElementById("submit2").setAttribute('style',"visibility: visible;");
-               // document.getElementById("submit").setAttribute('style',"visibility: hidden;");
-                    //document.getElementById("attempt").setAttribute('style',"visibility: hidden;");
+               
                 }
-
-
-
-
 
                 //redisplay the tries left
                 document.getElementById("attemptsLeft").innerHTML = triesLeft;
@@ -259,12 +261,9 @@ var word;
     element.parentNode.removeChild(element);
 
     //and make everything else visible
-     //document.getElementById("triesImage").setAttribute('style',"visibility: visible;");
+     
         document.getElementById("image").setAttribute('style',"visibility: visible;");
         document.getElementById("word").setAttribute('style',"visibility: visible;");
-        //document.getElementById("word2").setAttribute('style',"visibility: visible;");
-        //document.getElementById("attempt").setAttribute('style',"visibility: visible;");
-        //document.getElementById("submit").setAttribute('style',"visibility: visible;");
         document.getElementById("bottomTries").setAttribute('style',"visibility: visible;");
 
     }   
