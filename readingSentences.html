@@ -87,78 +87,10 @@ randomly generated sentence for practice reading
 <script>
     
     
-    function capitalize(string)
-    {
-      return string.charAt(0).toUpperCase() + string.slice(1);  
-        
-    }
-    function addPeriod(string)
-    {
-        string +=".";
-       return string 
-        
-    }
     
     
-function buildSimpleSentence()       //starts the game
-    {
-   
     
-    document.getElementById("simple").setAttribute('style',"visibility: visible;");
-    document.getElementById("silly").setAttribute('style',"visibility: hidden;");
-    
-        
-     var art = articles[Math.floor(Math.random() * articles.length)];
-     art = capitalize(art);
-     document.getElementById("simArt").innerHTML = art;
-        
-    
-        
-        
-    document.getElementById("simAdj").innerHTML = adjectives[Math.floor(Math.random() * adjectives.length)];
-    document.getElementById("simNoun").innerHTML = nouns[Math.floor(Math.random() * nouns.length)];
-        
-        
-    //add period to end of last word
-        var verb = verbs[Math.floor(Math.random() * verbs.length)];
-        verb = addPeriod(verb);
-        document.getElementById("simVerb").innerHTML = verb;
-        
-      
-        
-    }
- 
- function buildSillySentence()
-    {
-        document.getElementById("silly").setAttribute('style',"visibility: visible;");
-    document.getElementById("simple").setAttribute('style',"visibility: hidden;");
-        
-    var art = articles[Math.floor(Math.random() * articles.length)];
-    art = capitalize(art);   
-    document.getElementById("sillyArt").innerHTML = art;
-        
-        
-        
-        
-    document.getElementById("sillyAdj").innerHTML = adjectives[Math.floor(Math.random() * adjectives.length)];
-    document.getElementById("sillyNoun").innerHTML = nouns[Math.floor(Math.random() * nouns.length)];
-    document.getElementById("sillyVerb").innerHTML = verbs[Math.floor(Math.random() * verbs.length)];
-        
-        document.getElementById("sillyPrep").innerHTML = prepositions[Math.floor(Math.random() * prepositions.length)];
-    document.getElementById("sillyArt2").innerHTML = articles[Math.floor(Math.random() * articles.length)];
-    document.getElementById("sillyAdj2").innerHTML = adjectives[Math.floor(Math.random() * adjectives.length)];
-        
-     
-        
-        //add period to end of last word
-        var noun2 = nouns[Math.floor(Math.random() * nouns.length)];
-        noun2 = addPeriod(noun2);
-        document.getElementById("sillyNoun2").innerHTML = noun2;
-        
-        
-        
-        
-    }
+
     
 
     
