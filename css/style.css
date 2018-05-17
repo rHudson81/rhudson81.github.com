@@ -159,12 +159,10 @@ body{
         #correct{
             height: 70px;
             width: 70px;
-            float:left;
         }
         #wrong{
             height: 70px;
             width: 70px;
-            float:right;
         }
 
 

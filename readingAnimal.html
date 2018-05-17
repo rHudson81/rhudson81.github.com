@@ -217,7 +217,7 @@ var word;
                     triesLeft --;
                     responsiveVoice.speak("try again", "US English Female");
                 }else{
-                    responsiveVoice.speak("good job, keep going", "US English Female");
+                    responsiveVoice.speak("good job", "US English Female");
                 }
 
 
@@ -225,12 +225,19 @@ var word;
                 if(isInArray("_",cloneArray) == false)//if no -'s left in array
                 {
                     displayMessage("WINNER");
+                    //alert(cloneArray);
+                    //spoeak it letter by letter
+                    for(var q = 0;q<cloneArray.length;q++)
+                        {
+                        responsiveVoice.speak(cloneArray[q], "US English Female");
+                        }
+                    //responsiveVoice.speak(word, "US English Female");
+                    
+                    
+                    
+                    
                     responsiveVoice.speak("Congratulations, please play again", "US English Female");
-                    
-                    
-                    
-                    
-                document.getElementById("submit2").setAttribute('style',"visibility: visible;");
+            document.getElementById("submit2").setAttribute('style',"visibility: visible;");
                
                 }
 
