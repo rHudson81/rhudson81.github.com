@@ -42,13 +42,13 @@
         
         <div id="inst">
 
-            <h3>Have your child try and spell the animal.</h3> 
+            <h3>In this section, a picture of an animal will appear on the page with a series of blanks for each missing letter.</h3> 
             
             
-            <h3>Enter one letter at a time.</h3>
-            <h3>click on the animal!</h3>
+            <h3>Have your child try and spell the name of the animal.</h3>
+            <h3>Enter one letter at a time. Since some animals have several common names, click on the animal for the correct word to spell.</h3>
      
-         <button class = "buttons" type = "submit" id = "instSub" onclick = "Go()">ok lets play</button>
+         <button class = "buttons" type = "submit" id = "instSub" onclick = "Go()">Okay Lets Play!</button>
         </div>
     </div>
     
@@ -85,23 +85,7 @@
     
 <script>
     
- document.onkeydown = function(event)
- {  //get the key pressed
-    var key = String.fromCharCode(event.keyCode);
-     var code = event.keyCode;
-    
-     //make it lower
-     Key = key.toLowerCase();
-     
-     
-     
-     
-     
-     
-     
-     //call function
-     checkLetter(cloneBlank,cloneArray, Key, code);
- }
+ 
     
     
 var word;
@@ -112,7 +96,7 @@ var word;
     var blankWord;
 
 
-
+var i= 0;
 
 
  
@@ -131,16 +115,38 @@ var word;
 
         }
         makeGame();
-       // document.getElementById("submit").setAttribute('style',"visibility: visible;");
+       
         document.getElementById("submit2").setAttribute('style',"visibility: hidden;");
-        //document.getElementById("attempt").setAttribute('style',"visibility: visible;");
+        
+        document.onkeydown = function(event)
+         {  //get the key pressed
+            var key = String.fromCharCode(event.keyCode);
+             var code = event.keyCode;
+
+             //make it lower
+             Key = key.toLowerCase();
+
+            //call function
+             checkLetter(cloneBlank,cloneArray, Key, code);
+         }
         
     }
   
     function makeGame()
     {
-                //get one word for databse
-        word = Animals[Math.floor(Math.random() * Animals.length)];
+          
+        //sort arrays into ascending order on length
+        Animals.sort(function(a,b)
+                    {
+            return a.length - b.length || a.localeCompare(b);
+            
+        })
+        
+        //get one word for databse
+        word = Animals[i];
+        
+        
+        
         word = word.toLowerCase();
 
         //for attempts
@@ -225,19 +231,25 @@ var word;
                 if(isInArray("_",cloneArray) == false)//if no -'s left in array
                 {
                     displayMessage("WINNER");
-                    //alert(cloneArray);
-                    //spoeak it letter by letter
-                    for(var q = 0;q<cloneArray.length;q++)
+                    
+                    
+                    
+                    //speak it letter by letter
+                   
+                 /*   for(var q = 0;q<cloneArray.length;q++)
                         {
                         responsiveVoice.speak(cloneArray[q], "US English Female");
                         }
-                    //responsiveVoice.speak(word, "US English Female");
                     
                     
-                    
-                    
+                    responsiveVoice.speak(word, "US English Female");
+                   */ 
                     responsiveVoice.speak("Congratulations, please play again", "US English Female");
-            document.getElementById("submit2").setAttribute('style',"visibility: visible;");
+            
+                    document.getElementById("submit2").setAttribute('style',"visibility: visible;");
+                    
+                    //increment to next animal
+                    i++;
                
                 }
 

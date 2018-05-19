@@ -203,30 +203,30 @@ body{
 
 
 #addsub {
-    top: 120px;
+    top: 125px;
     background-color: #FF7F00; 
 }
 
 #reverse {
-    top: 220px;
+    top: 230px;
     background-color:  #FFFF00; 
 }
 
 #sightWords {
-    top: 320px;
+    top: 335px;
 background-color: #00FF00; 
 
 }
 
 #hangman {
-    top: 420px;
+    top: 440px;
 
     background-color: #0000FF; 
 
 }
 
 #sentences {
-    top: 520px;
+    top: 545px;
 
     background-color: #4B0082; 
 
@@ -268,4 +268,45 @@ input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none; 
   margin: 0; 
 }
+
+
+
+/*for rainbow color change on colored on index page */
+.rainbow {
+   /* Chrome, Safari, Opera */
+  -webkit-animation: rainbow 3s infinite; 
+  
+  /* Internet Explorer */
+  -ms-animation: rainbow 3s infinite;
+  
+  /* Standar Syntax */
+  animation: rainbow 3s infinite; 
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes rainbow{
+	20%{color: red;}
+	40%{color: yellow;}
+	60%{color: green;}
+	80%{color: blue;}
+	100%{color: orange;}	
+}
+/* Internet Explorer */
+@-ms-keyframes rainbow{
+	20%{color: red;}
+	40%{color: yellow;}
+	60%{color: green;}
+	80%{color: blue;}
+	100%{color: orange;}	
+}
+
+/* Standar Syntax */
+@keyframes rainbow{
+	5%{color: red;}
+	35%{color: yellow;}
+	65%{color: green;}
+	85%{color: blue;}
+	0%{color: orange;}	
+}
+
 

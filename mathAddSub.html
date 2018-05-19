@@ -4,8 +4,8 @@
     Date: 4/11/18
     mathAddSub.html
 
-simple addition and subtractions randomly generated from a databse or an array
-*need brief instructions before starting the game
+simple addition and subtractions randomly generated 
+
 displays simple math problem,child must get correct to move to next question
 possibility  of explaining the problem better if incorrect answer is given
 	-->
@@ -18,6 +18,7 @@ possibility  of explaining the problem better if incorrect answer is given
 <meta name="viewport" content="width=device-width, initial-scale=1">
  <link rel="stylesheet" type="text/css" href="css/style.css">
 <script src="private/jFunctions.js"> </script>
+    <script src="private/arrays.js"> </script>
 <script src='https://code.responsivevoice.org/responsivevoice.js'></script>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     
@@ -45,8 +46,9 @@ possibility  of explaining the problem better if incorrect answer is given
        <div id="inst" >
         
         
-           <h3>Finish the equation by adding in the correct answer.</h3> 
-           <h3>Click on a number if you dont know what number it is, and it will be read aloud to you.</h3>
+           <h3>In this section we will be practicing our basic addition and subtraction problems ranging in numbers from 1 to 10</h3> 
+           <h3>Finish the equation by typing in the correct answer  on your keyboard.</h3>
+           <h3>If your child doesn’t know or recognize a number, simply click on that number to have it read aloud to them</h3>
             
      
          
@@ -88,6 +90,8 @@ possibility  of explaining the problem better if incorrect answer is given
 document.onkeydown = function(event)
  {  
     var code = event.keyCode;
+    
+    
     if(code === 13)
        {
        
@@ -97,7 +101,7 @@ document.onkeydown = function(event)
     
     
     
-var signArray = ["+","-"] ;
+
 var score = 0;
 var n1;
 var n2;
