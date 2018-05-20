@@ -189,15 +189,7 @@ var i= 0;
     
     function checkLetter(cloneBlank, cloneArray, letter, keyCode)
     {
-        //alert(keyCode);
-        //if non letter is pressed
-        
-        
-        
-        
-        
-        
-        var length = cloneBlank.length;
+       var length = cloneBlank.length;
         letter = letter.trim();
         letter = letter.toLowerCase();
         var tick = 0;//for if the letter was success
@@ -223,7 +215,7 @@ var i= 0;
                     triesLeft --;
                     responsiveVoice.speak("try again", "US English Female");
                 }else{
-                    responsiveVoice.speak("good job", "US English Female");
+                    responsiveVoice.speak(posResponses[Math.floor(Math.random() * posResponses.length)], "US English Female");
                 }
 
 
@@ -232,19 +224,30 @@ var i= 0;
                 {
                     displayMessage("WINNER");
                     
+                     document.onkeydown = function(event)
+                         {  
+                            var code = event.keyCode;
+
+
+                            if(code === 13)
+                               {
+
+                               Go();
+                               }
+                        }
                     
                     
                     //speak it letter by letter
                    
-                 /*   for(var q = 0;q<cloneArray.length;q++)
+                    for(var q = 0;q<cloneArray.length;q++)
                         {
                         responsiveVoice.speak(cloneArray[q], "US English Female");
                         }
                     
                     
                     responsiveVoice.speak(word, "US English Female");
-                   */ 
-                    responsiveVoice.speak("Congratulations, please play again", "US English Female");
+                    
+                   // responsiveVoice.speak("Congratulations, please play again", "US English Female");
             
                     document.getElementById("submit2").setAttribute('style',"visibility: visible;");
                     

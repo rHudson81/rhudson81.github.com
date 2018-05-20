@@ -82,15 +82,7 @@ displays a number, child must enter two numbers that either that would complete 
 <script>
     
     
-document.onkeydown = function(event)
- {  
-    var code = event.keyCode;
-    if(code === 13)
-       {
-       
-       solveIt();
-       }
-}    
+   
     
 var score = 0;
 var number;
@@ -119,6 +111,15 @@ var number;
         document.getElementById("n1").focus();
         
         simpleProblem();
+        document.onkeydown = function(event)
+         {  
+            var code = event.keyCode;
+            if(code === 13)
+               {
+
+               solveIt();
+               }
+        } 
     }
  
     
@@ -159,15 +160,13 @@ function simpleProblem()
        var n1 =  document.getElementById("n1").value;
         var n2 =  document.getElementById("n2").innerHTML;
         
-       alert(number);
-        alert(n1);
-        alert(n2);
+       
         
        if(parseInt(n1) + parseInt(n2) == number || parseInt(n1) - parseInt(n2) == number) //if correct
                 {
                    
                   displayMessage("CORRECT");
-                    responsiveVoice.speak("good job", "US English Female");
+                    responsiveVoice.speak(posResponses[Math.floor(Math.random() * posResponses.length)], "US English Female");
                   score++;
                   document.getElementById("score").innerHTML = score;
                     document.getElementById("submit2").setAttribute('style',"visibility: visible;");
@@ -176,6 +175,17 @@ function simpleProblem()
                     //document.getElementById("submit2").setAttribute('style',"visibility: visible;");
                     //change out textboxs with correct numbers
                     //show message for good job and gettting it correct
+                    
+                    
+                    document.onkeydown = function(event)
+                     {  
+                        var code = event.keyCode;
+                        if(code === 13)
+                           {
+
+                           xplodeGo();
+                           }
+                    } 
                     
                     
                 }

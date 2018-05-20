@@ -12,3 +12,5 @@ var adjectives = ["striped", "ugly", "red", "old", "brave","pink", "shiny", "sad
 var Animals = ["cat", "dog", "chicken", "pig", "horse", "cow", "rabbit", "sheep", "duck", "fish","bear","owl","deer","frog","monkey","panda"]; 
 
 var signArray = ["+","-"] ;
+
+var posResponses = ["Good Job", "Keep Going", "nice work", "you did it", "keep it up, you're doing great", "Thats wonderful" ]
