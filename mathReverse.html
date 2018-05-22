@@ -26,12 +26,12 @@ displays a number, child must enter two numbers that either that would complete 
 <body>
 
     <div id="mySidenav" class="sidenav">
-        <a href="index.html"id = "home"><img src = "css/home.png" class="navIcon"/></a>
-        <a href="mathAddSub.html" id= "addsub"><img src = "css/add%20sub.png" class="navIcon"/></a>
-        <a href="mathReverse.html" id= "reverse"><img src = "css/reverse.png" class="navIcon"/><img src = "css/add%20sub.png" class="navIcon"/></a>
-        <a href="readingSightWords.html" id = "sightWords"><img src = "css/sight.png" class="navIcon"/></a>
-        <a href="readingAnimal.html" id = "hangman"><img src = "css/hangman.png" class="navIcon"/></a>
-        <a href="readingSentences.html" id = "sentences"><img src = "css/silly.png" class="navIcon"/></a>
+        <a href="index.html" class="fade-in one" id = "home"><img src = "css/home.png" class="navIcon"/></a>
+        <a href="mathAddSub.html" class="fade-in two"id= "addsub"><img src = "css/add%20sub.png" class="navIcon"/></a>
+        <a href="mathReverse.html" class="fade-in three" id= "reverse"><img src = "css/reverse.png" class="navIcon"/><img src = "css/add%20sub.png" class="navIcon"/></a>
+        <a href="readingSightWords.html" class="fade-in four" id = "sightWords"><img src = "css/sight.png" class="navIcon"/></a>
+        <a href="readingAnimal.html"  class="fade-in five"id = "hangman"><img src = "css/hangman.png" class="navIcon"/></a>
+        <a href="readingSentences.html"  class="fade-in six"id = "sentences"><img src = "css/silly.png" class="navIcon"/></a>
     </div>
 
     
@@ -111,6 +111,7 @@ var number;
         document.getElementById("n1").focus();
         
         simpleProblem();
+        
         document.onkeydown = function(event)
          {  
             var code = event.keyCode;
@@ -134,10 +135,10 @@ function simpleProblem()
       
         if(sign == "-") //to make sure there are no negative numbers
             {   
-                if(n2 > n1) //switch em
+                if(n2 > number) //switch em
                    {
-                   var temp = n1;
-                    n1 = n2;
+                   var temp = number;
+                    number = n2;
                     n2 = temp;
                     temp = null;
                    }
@@ -218,7 +219,8 @@ function clearIt()
    
     
     //for voice
-$('#number').click(function(){responsiveVoice.speak(($("#number").text()));})   
+$('#number').click(function(){responsiveVoice.speak(($("#number").text()));})
+    $('#n2').click(function(){responsiveVoice.speak(($("#n2").text()));})
     
     
 </script>

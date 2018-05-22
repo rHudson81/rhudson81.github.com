@@ -30,15 +30,23 @@ body{
             }
 
 
-/*  for text box appearanes 
+.triesImage {
+    
+  max-width:50px;
+  max-height:15px;
+  width: auto;
+  height: auto;
+}
 
 
+/* for hangman image resize */
 
-
-#inst{
-    font-family: "Arial";
-    position: relative;
-    top: 6px;
+img {
+  
+  max-width:600px;
+  max-height:300px;
+  width: auto;
+  height: auto;
 }
 
 
@@ -189,6 +197,8 @@ body{
     font-size: 40px; /* Increase font size */
     color: black; /* White text color */
     border-radius: 0 5px 5px 0; /* Rounded corners on the top right and bottom right side */
+    /* for thin black border around each tab */
+    border-style: solid;
 }
 
 #mySidenav a:hover {
@@ -203,30 +213,30 @@ body{
 
 
 #addsub {
-    top: 125px;
+    top: 130px;
     background-color: #FF7F00; 
 }
 
 #reverse {
-    top: 230px;
+    top: 240px;
     background-color:  #FFFF00; 
 }
 
 #sightWords {
-    top: 335px;
+    top: 350px;
 background-color: #00FF00; 
 
 }
 
 #hangman {
-    top: 440px;
+    top: 460px;
 
     background-color: #0000FF; 
 
 }
 
 #sentences {
-    top: 545px;
+    top: 570px;
 
     background-color: #4B0082; 
 
@@ -242,24 +252,77 @@ background-color: #00FF00;
     
 }
 
-.triesImage {
-    
-  max-width:50px;
-  max-height:15px;
-  width: auto;
-  height: auto;
+
+
+/* for animation when the menu loads in the beginning */
+/* make keyframes that tell the start state and the end state of our object */
+ 
+@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+ 
+.fade-in {
+ opacity:0;  /* make things invisible upon start */
+ -webkit-animation:fadeIn ease-in 1;  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+ -moz-animation:fadeIn ease-in 1;
+ animation:fadeIn ease-in 1;
+ 
+ -webkit-animation-fill-mode:forwards;  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
+ -moz-animation-fill-mode:forwards;
+ animation-fill-mode:forwards;
+ 
+ -webkit-animation-duration:.7s;
+ -moz-animation-duration:.7s;
+ animation-duration:.7s;
+}
+ /* red */
+.fade-in.one {
+-webkit-animation-delay: 0.5s;
+-moz-animation-delay: 0.5s;
+animation-delay: 0.5s;
+}
+
+ /* orange */
+.fade-in.two {
+-webkit-animation-delay: 1s;
+-moz-animation-delay:1s;
+animation-delay: 1s;
+}
+
+ /* yellow */
+.fade-in.three {
+-webkit-animation-delay: 1.5s;
+-moz-animation-delay: 1.5s;
+animation-delay: 1.5s;
+}
+
+/* green */
+.fade-in.four {
+-webkit-animation-delay: 2s;
+-moz-animation-delay: 2s;
+animation-delay: 2s;
+}
+
+/* blue */
+.fade-in.five {
+-webkit-animation-delay: 2.5s;
+-moz-animation-delay: 2.5s;
+animation-delay: 2.5s;
+}
+
+/* purple */
+.fade-in.six {
+-webkit-animation-delay: 3s;
+-moz-animation-delay: 3s;
+animation-delay: 3s;
 }
 
 
-/* for hangman image resize */
 
-img {
-  
-  max-width:600px;
-  max-height:300px;
-  width: auto;
-  height: auto;
-}
+
+
+
+
 
 /*to turn off number spinners on input boxes */
 
@@ -308,5 +371,13 @@ input[type=number]::-webkit-outer-spin-button {
 	85%{color: blue;}
 	0%{color: orange;}	
 }
+
+
+
+
+ 
+
+ 
+ 
 
 

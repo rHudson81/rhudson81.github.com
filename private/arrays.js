@@ -13,4 +13,4 @@ var Animals = ["cat", "dog", "chicken", "pig", "horse", "cow", "rabbit", "sheep"
 
 var signArray = ["+","-"] ;
 
-var posResponses = ["Good Job", "Keep Going", "nice work", "you did it", "keep it up, you're doing great", "Thats wonderful" ]
+var posResponses = ["Good Job", "Keep Going", "Nice work", "You did it!", "Keep it up", "You're doing great", "That's wonderful", "Super", "Thats right","Terrific","Thats great", "Way to go" ];
