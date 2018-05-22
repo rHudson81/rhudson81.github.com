@@ -193,12 +193,12 @@ img {
     transition: 0.3s; /* Add transition on hover */
     padding: 10px; /* 15px padding */
     width: 200px; /* Set a specific width */
-    text-decoration: none; /* Remove underline */
-    font-size: 40px; /* Increase font size */
+    /*text-decoration: none;  Remove underline */
+    /*font-size: 40px;  Increase font size */
     color: black; /* White text color */
     border-radius: 0 5px 5px 0; /* Rounded corners on the top right and bottom right side */
-    /* for thin black border around each tab */
-    border-style: solid;
+    
+    border-style: solid;/* for thin black border around each tab */
 }
 
 #mySidenav a:hover {
@@ -245,7 +245,7 @@ background-color: #00FF00;
 /*for icons for naviagation menun */
 .navIcon {
     
-    max-width:750px;
+    max-width:650px;
   max-height:75px;
   width: auto;
   height: auto;
@@ -271,9 +271,9 @@ background-color: #00FF00;
  -moz-animation-fill-mode:forwards;
  animation-fill-mode:forwards;
  
- -webkit-animation-duration:.7s;
- -moz-animation-duration:.7s;
- animation-duration:.7s;
+ -webkit-animation-duration:.2s;
+ -moz-animation-duration:.2s;
+ animation-duration:.2s;
 }
  /* red */
 .fade-in.one {

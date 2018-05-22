@@ -4,7 +4,7 @@
     Class: IS 490
     Project: Childrens learning website
     Date: 4/11/18
-    readinghangMan.html
+    readinganimal.html
 
 * try and spell the animal thats in the picture.
 -->
@@ -170,7 +170,10 @@ var i= 0;
 
         //replace all letters with blanks
         blankWord = makeBlanks(cloneArray);
-        document.getElementById("word").innerHTML = blankWord.join(" ");  
+        document.getElementById("word").innerHTML = blankWord.join(" ");
+        
+        //speak the name of th animal
+        responsiveVoice.speak(word, "US English Female");
     }
     
     
