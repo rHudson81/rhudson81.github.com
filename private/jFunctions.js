@@ -25,8 +25,8 @@ function buildSimpleSentence()       //starts the game
     {
    
     
-    document.getElementById("simple").setAttribute('style',"visibility: visible;");
-    document.getElementById("silly").setAttribute('style',"visibility: hidden;");
+    document.getElementById("simple").setAttribute('style',"visibility: visible; height: 2em;");
+    document.getElementById("silly").setAttribute('style',"visibility: hidden; height:0px;");
     
         
      var art = articles[Math.floor(Math.random() * articles.length)];
@@ -50,8 +50,8 @@ function buildSimpleSentence()       //starts the game
 
  function buildSillySentence()
     {
-        document.getElementById("silly").setAttribute('style',"visibility: visible;");
-    document.getElementById("simple").setAttribute('style',"visibility: hidden;");
+        document.getElementById("silly").setAttribute('style',"visibility: visible; height: 3em");
+    document.getElementById("simple").setAttribute('style',"visibility: hidden; height:0px;");
         
     var art = articles[Math.floor(Math.random() * articles.length)];
     art = capitalize(art);   
@@ -168,8 +168,9 @@ element.parentNode.removeChild(element);
 
 
 function displayMessage(message)
-    {
-    document.getElementById("message").setAttribute('style',"visibility: visible;");
-    document.getElementById("message").innerHTML = message;
-        
-    }
+{
+document.getElementById("message").setAttribute('style',"visibility: visible;");
+document.getElementById("message").innerHTML = message;
+}
+
+

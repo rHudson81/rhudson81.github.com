@@ -48,7 +48,7 @@ displays  one sight word at a time, child is to read the sight word and say it, 
            <h3>Sight words are a group of words that cannot be sounded out through phonics; they don’t play by the rules! Sight words have to be learned by sight.</h3>
            <h3>Learning these words helps children become more confident readers.</h3>
            <h3>Each screen will display one sight word. If your child reads it correctly, click yes and if not, click no.</h3>
-           <h3>After 45 sight words, a score will be issued along with a list of sight words that your child can practice on before trying again</h3>
+           <h3>After <span id = "count"></span> sight words, a score will be issued along with a list of sight words that your child can practice on before trying again</h3>
         
         
        
@@ -80,7 +80,10 @@ displays  one sight word at a time, child is to read the sight word and say it, 
     </div>
 
     <script>
-    
+        
+        //for displaying how miny sight words there are
+        var count = wordList.length;
+    document.getElementById("count").innerHTML = count;    
 
 
 var current = 0;  
@@ -115,7 +118,7 @@ function correct()
         
         current++;
         currentScore++;
-     if(current == wordList.length) //if at end of videos
+     if(current == wordList.length) //if at end of words
      {
          displayResults();
          return;
@@ -129,16 +132,20 @@ function correct()
     
 function wrong()
     {
+        
+        
         if(current == wordList.length)  //if at end of list
      {
          displayResults();
          return;
      }
+        current++;
         
        needsWork.push(wordList[current-1]);
         
+      
        document.getElementById("word").innerHTML = wordList[current];
-        current++;
+       
         
     }
     
@@ -148,6 +155,20 @@ function displayResults()
         
         displayMessage("you scored a " + Math.round(currentScore/wordList.length * 100) + "%");
         document.getElementById("word").style.fontSize = "medium";
+        
+        /*
+        var i;
+        for(i = 0; i< needsWork.length;i++)
+        {
+            alert(document.getElementById("word").innerHTML = needsWork[i]);
+            document.getElementById("word").innerHTML = needsWork[i];
+            
+        }
+
+        */
+      
+        
+        
         document.getElementById("word").innerHTML = needsWork;
         
         

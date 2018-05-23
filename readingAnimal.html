@@ -47,6 +47,7 @@
             
             <h3>Have your child try and spell the name of the animal.</h3>
             <h3>Enter one letter at a time. Since some animals have several common names, click on the animal for the correct word to spell.</h3>
+            <h3>There are <span id = "count"></span> animals, see if you can make it all the way through them!</h3>
      
          <button class = "buttons" type = "submit" id = "instSub" onclick = "Go()">Okay Lets Play!</button>
         </div>
@@ -84,6 +85,10 @@
   
     
 <script>
+    
+    //for displaying how many animals there are
+    var count = Animals.length;
+    document.getElementById("count").innerHTML = count;
     
  
     
