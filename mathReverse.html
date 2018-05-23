@@ -59,14 +59,15 @@ displays a number, child must enter two numbers that either that would complete 
 <br/>
     <span class = "message" id = "message" style = "visibility:hidden"></span>
         <div class = "problem" id = "problem" style = "visibility:hidden">
-            <span id = "number" ></span>
-        <span>=</span>
+            
+        
         <span  class = "numbers" type = "number" id = "n2" 
               style= "visibility: hidden"></span>
      <span id = "sign"> </span>
         <input  class = "numbers" type = "number" id = "n1" maxlength = "2" 
            style= "visibility: hidden"/>
-            
+            <span>=</span>
+            <span id = "number" ></span>
             
         </div>
         <br>
@@ -135,13 +136,17 @@ function simpleProblem()
       
         if(sign == "-") //to make sure there are no negative numbers
             {   
-                if(n2 > number) //switch em
+                if(n2 < number) //switch em
                    {
+                       
+                       
+                       
                    var temp = number;
                     number = n2;
                     n2 = temp;
                     temp = null;
                    }
+                
                 
             }
         
@@ -163,7 +168,7 @@ function simpleProblem()
         
        
         
-       if(parseInt(n1) + parseInt(n2) == number || parseInt(n1) - parseInt(n2) == number) //if correct
+       if(parseInt(n1) + parseInt(n2) == number || parseInt(n1) - parseInt(n2) == number || parseInt(n2) - parseInt(n1) == number) //if correct
                 {
                    
                   displayMessage("CORRECT");
