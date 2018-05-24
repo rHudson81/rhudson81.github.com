@@ -100,7 +100,7 @@ var word;
     var cloneBlank
     var blankWord;
 
-
+//to keep track of spot in name game
 var i= 0;
 
 
@@ -119,6 +119,11 @@ var i= 0;
            removeElement("inst");//remove instructions from page 
 
         }
+        
+        //clear message
+        displayMessage("");
+        
+        
         makeGame();
        
         document.getElementById("submit2").setAttribute('style',"visibility: hidden;");
@@ -221,7 +226,26 @@ var i= 0;
                 if(tick == 0) //if letter isnt found  decrement triesleft
                 {
                     triesLeft --;
-                    responsiveVoice.speak("try again", "US English Female");
+                    
+                    //if out of tries
+                    if(triesLeft == 0)
+                    {
+                        displayMessage("sorry");
+                        responsiveVoice.speak("sorry, please play again", "US English Female");
+
+                        i = 0;
+                        Go();
+
+
+
+                    }else{
+                        
+                        responsiveVoice.speak("try again", "US English Female");
+                    }
+                    
+                    
+                    
+                    
                 }else{
                     responsiveVoice.speak(posResponses[Math.floor(Math.random() * posResponses.length)], "US English Female");
                 }
@@ -269,17 +293,7 @@ var i= 0;
 
                 
 
-                //if out of tries
-                if(triesLeft == 0)
-                {
-                    displayMessage("sorry");
-                    responsiveVoice.speak("sorry, please try again", "US English Female");
-                    
-                    
-                    
-                    
-                   
-                }
+                
               
                 
     }

@@ -47,7 +47,7 @@ displays a number, child must enter two numbers that either that would complete 
         
         
        <h3>In this section we take on the more advanced concept of working backwards with addition and subtraction problems.</h3> 
-           <h3>For each problem, the sum (addition) or difference (subtraction) is given to you. Enter in any combination of two numbers that equal that number.</h3>
+           <h3>For each problem, the sum (addition) or difference (subtraction) is given to you. Enter in the number that finishes the problem correctly.</h3>
 <h3>If your child doesn’t know or recognize a number, simply click on that number to have it read aloud to them.</h3>            
      
          
@@ -168,45 +168,46 @@ function simpleProblem()
         
        
         
-       if(parseInt(n1) + parseInt(n2) == number || parseInt(n1) - parseInt(n2) == number || parseInt(n2) - parseInt(n1) == number) //if correct
-                {
-                   
-                  displayMessage("CORRECT");
-                    responsiveVoice.speak(posResponses[Math.floor(Math.random() * posResponses.length)], "US English Female");
-                  score++;
-                  document.getElementById("score").innerHTML = score;
-                    document.getElementById("submit2").setAttribute('style',"visibility: visible;");
-                    //document.getElementById("submit").setAttribute('style',"visibility: hidden;");
-                    
-                    //document.getElementById("submit2").setAttribute('style',"visibility: visible;");
-                    //change out textboxs with correct numbers
-                    //show message for good job and gettting it correct
-                    
-                    
-                    document.onkeydown = function(event)
-                     {  
-                        var code = event.keyCode;
-                        if(code === 13)
-                           {
+       if((sign == "+" && parseInt(n1) + parseInt(n2) == number) ||
+          (sign =="-" && parseInt(n2) - parseInt(n1) == number)) //if correct
+            {
 
-                           xplodeGo();
-                           }
-                    } 
-                    
-                    
-                }
-              else  //incorrect
-                  {
-                     displayMessage("INCORRECT");
-                      responsiveVoice.speak("sorry, try again", "US English Female");
-                      document.getElementById("n1").value = '';
-                    document.getElementById("n2").value = '';
-                    document.getElementById("n1").focus();
-                     // document.getElementById("submit2").setAttribute('style',"visibility: visible;");
-                   // document.getElementById("submit").setAttribute('style',"visibility: hidden;");
-                    
-                   // document.getElementById("submit2").setAttribute('style',"visibility: visible;");
-                }
+              displayMessage("CORRECT");
+                responsiveVoice.speak(posResponses[Math.floor(Math.random() * posResponses.length)], "US English Female");
+              score++;
+              document.getElementById("score").innerHTML = score;
+                document.getElementById("submit2").setAttribute('style',"visibility: visible;");
+                //document.getElementById("submit").setAttribute('style',"visibility: hidden;");
+
+                //document.getElementById("submit2").setAttribute('style',"visibility: visible;");
+                //change out textboxs with correct numbers
+                //show message for good job and gettting it correct
+
+
+                document.onkeydown = function(event)
+                 {  
+                    var code = event.keyCode;
+                    if(code === 13)
+                       {
+
+                       xplodeGo();
+                       }
+                } 
+
+
+            }
+          else  //incorrect
+              {
+                 displayMessage("INCORRECT");
+                  responsiveVoice.speak("sorry, try again", "US English Female");
+                  document.getElementById("n1").value = '';
+                document.getElementById("n2").value = '';
+                document.getElementById("n1").focus();
+                 // document.getElementById("submit2").setAttribute('style',"visibility: visible;");
+               // document.getElementById("submit").setAttribute('style',"visibility: hidden;");
+
+               // document.getElementById("submit2").setAttribute('style',"visibility: visible;");
+            }
           
          
          
