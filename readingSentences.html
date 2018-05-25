@@ -47,7 +47,7 @@ randomly generated sentence for practice reading
             
             
     
-         <button class = "buttons" type = "submit" id = "instSub" onclick = "removeElement('inst');">Okay, Let's Play</button>
+         <button class = "buttons" type = "submit" id = "instSub" onclick = "sentencesGo();">Okay, Let's Play</button>
         </div>
         
         
@@ -84,26 +84,7 @@ randomly generated sentence for practice reading
         </div>
 
 <script>
-    
-    
-    
-    
-    
-
-    
-
-    
-   function removeElement(elementId)
-    {
-    // Removes an element from the document
-    var element = document.getElementById(elementId);
-    element.parentNode.removeChild(element);
-
-    //and make everything else visible
-     document.getElementById("simplego").setAttribute('style',"visibility: visible;");
-        document.getElementById("sillygo").setAttribute('style',"visibility: visible;");
-        
-    }   
+  
     
  
     //<jquery for responsivespeech.js

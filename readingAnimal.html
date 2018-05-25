@@ -103,33 +103,7 @@ var word;
 //to keep track of spot in name game
 var i= 0;
 
-
  
- 
-  
-
-    
-//functions
-  
-  
- 
-    
-    
-    function removeElement(elementId)
-    {
-    // Removes an element from the document
-    var element = document.getElementById(elementId);
-    element.parentNode.removeChild(element);
-
-    //and make everything else visible
-     
-        document.getElementById("image").setAttribute('style',"visibility: visible;");
-        document.getElementById("word").setAttribute('style',"visibility: visible;");
-        document.getElementById("bottomTries").setAttribute('style',"visibility: visible;");
-
-    }   
-
-    
     //responsive voice to say animals name
 $('#image').click(function(){responsiveVoice.speak(word, "US English Female");})
     

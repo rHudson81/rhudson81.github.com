@@ -68,10 +68,6 @@ displays  one sight word at a time, child is to read the sight word and say it, 
         <button class = "buttons" id = "go" onclick = "sightGo()">GO</button>
         <input type = "image" src = "css/no.png" id ="wrong" onclick = "wrong()" style="visibility:hidden"/><br>
         <button class = "buttons" type = "submit2" id = "submit2" onclick = "sightGo()"style= "visibility: hidden">AGAIN</button>
-        
-
-        
-
         <br/>
         <br/>
         <br/>
@@ -81,7 +77,7 @@ displays  one sight word at a time, child is to read the sight word and say it, 
 
     <script>
         
-        //for displaying how miny sight words there are
+        //for displaying how many sight words there are
         var count = wordList.length;
     document.getElementById("count").innerHTML = count;    
 
@@ -90,26 +86,10 @@ var current = 0;
 var currentScore = 0;
 var needsWork = [];
 var perfect = "PERFECT";
-    
-
+var needsWork = [];
    
         
-        
-        
-        
-        
-        
-   function removeElement(elementId)
-    {
-        // Removes an element from the document
-        var element = document.getElementById(elementId);
-        element.parentNode.removeChild(element);
-    }   
-  
-        
-             
-            
-        
+      
     
 //for responsiveword.js
 $('#word').click(function(){responsiveVoice.speak(($("#word").text()), "US English Female");})

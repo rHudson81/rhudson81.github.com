@@ -2,12 +2,13 @@
 //for mathAddSub.html
  function go()       //starts the game
     {
-        
+        //if instructions are there remove them 
     if (document.contains(document.getElementById("inst")))
         {
            removeElement("inst");//remove instructions from page 
             
         }
+        //and make  everything else visible
         document.getElementById("message").setAttribute('style',"visibility: hidden;");
         document.getElementById("submit2").setAttribute('style',"visibility: hidden;");
         document.getElementById("answer").setAttribute('style',"visibility: visible;");
@@ -36,6 +37,8 @@
     
 function simpleProblem()
     {
+        
+        //get 2 random bumbers between 1 and 10, and a random sign
 n1 = parseInt(Math.floor(Math.random() * 10) + 1);
 n2 = parseInt(Math.floor(Math.random() * 10) + 1) ;
 sign = signArray[Math.floor(Math.random()*signArray.length)];
@@ -52,6 +55,9 @@ sign = signArray[Math.floor(Math.random()*signArray.length)];
                    }
                 
             }
+        
+        
+        //and set the values in html
         document.getElementById("n1").innerHTML = n1;
         document.getElementById("sign").innerHTML = sign;
         document.getElementById("n2").innerHTML = n2;
@@ -63,8 +69,11 @@ function solveIt() //when button is pressed
 
    var answer =  document.getElementById("answer").value;
 
+        
+        //if correct
     if(n1 + n2 == answer || n1-n2 == answer) //if correct
             {
+                //add to score
                 score++;
                 document.getElementById("score").innerHTML = score;
                 document.getElementById("answer").value = '';
@@ -73,14 +82,15 @@ function solveIt() //when button is pressed
                 //display message for correct
                 displayMessage("CORRECT");
                 
-                ;
                 
+                //random positive message
                 responsiveVoice.speak(posResponses[Math.floor(Math.random() * posResponses.length)], "US English Female");
 
                 document.getElementById("answer").setAttribute('style',"visibility: hidden;");
-               //document.getElementById("submit").setAttribute('style',"visibility: hidden;");
                 document.getElementById("submit2").setAttribute('style',"visibility: visible;");
                 
+                
+                //for enter to play again after game finished
                 document.onkeydown = function(event)
                          {  
                             var code = event.keyCode;
@@ -114,20 +124,23 @@ function reverseGo()       //starts the game
            removeElement("inst");//remove instructions from page 
             
         }  
+        //make all the stuf visible
         document.getElementById("message").setAttribute('style',"visibility: hidden;");
         document.getElementById("submit2").setAttribute('style',"visibility: hidden;");
         document.getElementById("problem").setAttribute('style',"visibility: visible;");
          document.getElementById("n1").setAttribute('style',"visibility: visible;");
          document.getElementById("n2").setAttribute('style',"visibility: visible;");
     document.getElementById("number").setAttribute('style',"visibility: visible;");
-    //document.getElementById("submit").setAttribute('style',"visibility: visible;");
     document.getElementById("go").setAttribute('style',"visibility: hidden;");
+        
+        //clear the values in
         document.getElementById("n1").value = '';
         document.getElementById("n2").value = '';
         document.getElementById("n1").focus();
         
         reverseProblem();
         
+        //enter to submit
         document.onkeydown = function(event)
          {  
             var code = event.keyCode;
@@ -141,7 +154,7 @@ function reverseGo()       //starts the game
  
     function reverseProblem()
     {
-        //random number between 1 and 100
+        //random number between 1 and 20
         number = parseInt(Math.floor(Math.random() * 20) + 1);
         n2 = parseInt(Math.floor(Math.random() * number) + 1);
         sign = signArray[Math.floor(Math.random()*signArray.length)];
@@ -176,24 +189,17 @@ function reverseGo()       //starts the game
         var n2 =  document.getElementById("n2").innerHTML;
         
        
-        
-       if((sign == "+" && parseInt(n1) + parseInt(n2) == number) ||
-          (sign =="-" && parseInt(n2) - parseInt(n1) == number)) //if correct
+        if((sign == "+" && parseInt(n1) + parseInt(n2) == number) ||
+          (sign == "-" && parseInt(n2) - parseInt(n1) == number)) //if correct
             {
-
+                //show message for good job and gettting it correct
               displayMessage("CORRECT");
                 responsiveVoice.speak(posResponses[Math.floor(Math.random() * posResponses.length)], "US English Female");
               score++;
               document.getElementById("score").innerHTML = score;
                 document.getElementById("submit2").setAttribute('style',"visibility: visible;");
-                //document.getElementById("submit").setAttribute('style',"visibility: hidden;");
-
-                //document.getElementById("submit2").setAttribute('style',"visibility: visible;");
-                //change out textboxs with correct numbers
-                //show message for good job and gettting it correct
-
-
-                document.onkeydown = function(event)
+               
+             document.onkeydown = function(event)
                  {  
                     var code = event.keyCode;
                     if(code === 13)
@@ -212,10 +218,7 @@ function reverseGo()       //starts the game
                   document.getElementById("n1").value = '';
                 document.getElementById("n2").value = '';
                 document.getElementById("n1").focus();
-                 // document.getElementById("submit2").setAttribute('style',"visibility: visible;");
-               // document.getElementById("submit").setAttribute('style',"visibility: hidden;");
-
-               // document.getElementById("submit2").setAttribute('style',"visibility: visible;");
+                 
             }
           
          
@@ -226,7 +229,7 @@ function reverseGo()       //starts the game
 //for readingAnimal.html
 function animalGo()
     {
-        
+        //if instructions are there
         if (document.contains(document.getElementById("inst")))
         {
            removeElement("inst");//remove instructions from page 
@@ -238,7 +241,9 @@ function animalGo()
         
         
         makeGame();
-       
+       document.getElementById("image").setAttribute('style',"visibility: visible;");
+        document.getElementById("word").setAttribute('style',"visibility: visible;");
+        document.getElementById("bottomTries").setAttribute('style',"visibility: visible;");
         document.getElementById("submit2").setAttribute('style',"visibility: hidden;");
         
         document.onkeydown = function(event)
@@ -279,15 +284,18 @@ function checkLetter(cloneBlank, cloneArray, letter, keyCode)
                
 
                 if(tick == 0) //if letter isnt found  decrement triesleft
-                {
+                {   
+                    //remove one from tries left
                     triesLeft --;
                     
                     //if out of tries
                     if(triesLeft == 0)
                     {
+                        //display message
                         displayMessage("sorry");
                         responsiveVoice.speak("sorry, please play again", "US English Female");
-
+                        
+                        //start over and go again
                         i = 0;
                         animalGo();
 
@@ -325,17 +333,14 @@ function checkLetter(cloneBlank, cloneArray, letter, keyCode)
                     
                     
                     //speak it letter by letter
-                   
-                    for(var q = 0;q<cloneArray.length;q++)
+                   for(var q = 0;q<cloneArray.length;q++)
                         {
                         responsiveVoice.speak(cloneArray[q], "US English Female");
                         }
                     
-                    
+                    //say the word on the animal again
                     responsiveVoice.speak(word, "US English Female");
                     
-                   // responsiveVoice.speak("Congratulations, please play again", "US English Female");
-            
                     document.getElementById("submit2").setAttribute('style',"visibility: visible;");
                     
                     //increment to next animal
@@ -373,7 +378,7 @@ function makeGame()
         word = Animals[i];
         
         
-        
+        //make it lowercase
         word = word.toLowerCase();
 
         //for attempts
@@ -404,6 +409,7 @@ function makeGame()
     }
     
 function makeBlanks(cloneArray)
+//make all the letters into "-"s
     {
         var x;
         for(x = 0; x < cloneArray.length; x++)
@@ -416,17 +422,17 @@ function makeBlanks(cloneArray)
     
     
  //for readingSight.html
- 
-
-    
-function correct()
+ function correct()//if corret button is pressed
     { 
-        
+        //go to next word
         current++;
+        
+        //incremernt score
         currentScore++;
+        
      if(current == wordList.length) //if at end of words
      {
-         displayResults();
+         displayResults();//display the results
          return;
          
      }
@@ -438,30 +444,19 @@ function correct()
 
 function displayResults()
     {
-        
+        //display percentage of score
         displayMessage("you scored a " + Math.round(currentScore/wordList.length * 100) + "%");
         document.getElementById("word").style.fontSize = "medium";
         
-        /*
-        var i;
-        for(i = 0; i< needsWork.length;i++)
-        {
-            alert(document.getElementById("word").innerHTML = needsWork[i]);
-            document.getElementById("word").innerHTML = needsWork[i];
-            
-        }
-
-        */
-      
         
-        
+        //display all the words that need work
         document.getElementById("word").innerHTML = needsWork;
         
         
         
         if(currentScore == wordList.length ) //if got all correct
             {
-        displayMessage("PERFECT");
+                displayMessage("PERFECT");
                 responsiveVoice.speak("PERFECT", "US English Female");
             }
          document.getElementById("correct").setAttribute('style',"visibility: hidden;"); //hide correct button
@@ -472,19 +467,16 @@ function displayResults()
     
 function sightGo()       //starts the game
     {
-       current = 0;
+        current = 0;
         currentScore = 0;
-        var needsWork = [];
+        
 if (document.contains(document.getElementById("inst")))
         {
            removeElement("inst");//remove instructions from page 
             
         }
      document.getElementById("word").style.fontSize = "100px";   
-     
-        
-        
-    document.getElementById("correct").setAttribute('style',"visibility: visible;");
+     document.getElementById("correct").setAttribute('style',"visibility: visible;");
     document.getElementById("wrong").setAttribute('style',"visibility: visible;");
     document.getElementById("word").innerHTML = wordList[current];    
     document.getElementById("go").setAttribute('style',"visibility: hidden;");
@@ -500,8 +492,9 @@ function wrong()
          displayResults();
          return;
      }
-        current++;
+        current++;//go to next word
         
+        //add the wrong word to the array of ones that need work
        needsWork.push(wordList[current-1]);
         
       
@@ -519,7 +512,7 @@ function wrong()
 
 //for readingSentences.html
 
-function addPeriod(string)
+function addPeriod(string)//adds persiod to end of word
     {
         string +=".";
        return string 
@@ -580,86 +573,29 @@ function buildSimpleSentence()       //starts the game
     }
  
 function capitalize(string)
-    {
+    {//capatalize firsst letter of a word
       return string.charAt(0).toUpperCase() + string.slice(1);  
         
     }
     
-
- 
-
-
-
-
-/*function go() //starts the game
+function sentencesGo()
 {
-
-
-    document.getElementById("correct").setAttribute('style', "visibility: visible;");
-    document.getElementById("wrong").setAttribute('style', "visibility: visible;");
-    document.getElementById("word").innerHTML = wordList[current];
-
-    //document.getElementById("word").innerHTML = wordList[0];
-    document.getElementById("go").setAttribute('style', "visibility: hidden;");
+     //if instructions are there
+        if (document.contains(document.getElementById("inst")))
+        {
+           removeElement("inst");//remove instructions from page 
+        }
+    
+    //and make everything else visible
+     document.getElementById("simplego").setAttribute('style',"visibility: visible;");
+        document.getElementById("sillygo").setAttribute('style',"visibility: visible;");
+    
 }
-
-
-function correct() {
-    current++;
-    currentScore++;
-    if (current == wordList.length) //if at end of videos
-    {
-        displayResults();
-        return;
-
-    }
-
-    document.getElementById("word").innerHTML = wordList[current];
-    document.getElementById("score").innerHTML = currentScore;
-
-}
-
-function wrong() {
-    if (current == wordList.length) //if at end of list
-    {
-        displayResults();
-        return;
-    }
-
-    needsWork.push(wordList[current - 1]);
-
-    document.getElementById("word").innerHTML = wordList[current];
-    current++;
-
-}
-
-function displayResults() {
-
-    alert("you scored a " + Math.round(currentScore / wordList.length * 100) + "%");
-
-    //display missed words
-    for (var i = 0; i < needsWork.length; i++) {
-        document.write(needsWork[i] + "<br />");
-    }
-
-    if (currentScore == wordList.length) //if got all correct
-    {
-        document.getElementById("word").innerHTML = perfect;
-
-        document.getElementById("correct").setAttribute('style', "visibility: hidden;"); //hide correct button
-        document.getElementById("wrong").setAttribute('style', "visibility: hidden;"); //hide wrong button
-    }
-
-}
-
-
  
-*/
+
+
 
 /*for nav*/
-
-
-
 
 /* Set the width of the side navigation to 350px */
 function closeNav() {
@@ -676,15 +612,21 @@ function openNav() {
 
 
 
-//for removing instructions from each game
 
 
 
 
+//for displaying messages on each page
 function displayMessage(message)
 {
 document.getElementById("message").setAttribute('style',"visibility: visible;");
 document.getElementById("message").innerHTML = message;
 }
 
-
+//for removing elements from the pages(instructions)
+function removeElement(elementId)
+{
+    // Removes an element from the document
+    var element = document.getElementById(elementId);
+    element.parentNode.removeChild(element);
+} 
