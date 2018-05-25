@@ -65,9 +65,9 @@ displays  one sight word at a time, child is to read the sight word and say it, 
       
     
    <input type = "image" src = "css/yes.png" id ="correct" onclick = "correct()"  style="visibility:hidden" />
-        <button class = "buttons" id = "go" onclick = "go()">GO</button>
+        <button class = "buttons" id = "go" onclick = "sightGo()">GO</button>
         <input type = "image" src = "css/no.png" id ="wrong" onclick = "wrong()" style="visibility:hidden"/><br>
-        <button class = "buttons" type = "submit2" id = "submit2" onclick = "go()"style= "visibility: hidden">AGAIN</button>
+        <button class = "buttons" type = "submit2" id = "submit2" onclick = "sightGo()"style= "visibility: hidden">AGAIN</button>
         
 
         
@@ -91,98 +91,7 @@ var currentScore = 0;
 var needsWork = [];
 var perfect = "PERFECT";
     
- 
-function go()       //starts the game
-    {
-       current = 0;
-        currentScore = 0;
-        var needsWork = [];
-if (document.contains(document.getElementById("inst")))
-        {
-           removeElement("inst");//remove instructions from page 
-            
-        }
-     document.getElementById("word").style.fontSize = "100px";   
-     
-        
-        
-    document.getElementById("correct").setAttribute('style',"visibility: visible;");
-    document.getElementById("wrong").setAttribute('style',"visibility: visible;");
-    document.getElementById("word").innerHTML = wordList[current];    
-    document.getElementById("go").setAttribute('style',"visibility: hidden;");
-        document.getElementById("message").setAttribute('style',"visibility: hidden;");
-        }
-    
-function correct()
-    { 
-        
-        current++;
-        currentScore++;
-     if(current == wordList.length) //if at end of words
-     {
-         displayResults();
-         return;
-         
-     }
-        
-        document.getElementById("word").innerHTML = wordList[current];
-        document.getElementById("score").innerHTML = currentScore;
-        
-    }
-    
-function wrong()
-    {
-        
-        
-        if(current == wordList.length)  //if at end of list
-     {
-         displayResults();
-         return;
-     }
-        current++;
-        
-       needsWork.push(wordList[current-1]);
-        
-      
-       document.getElementById("word").innerHTML = wordList[current];
-       
-        
-    }
-    
-    
-function displayResults()
-    {
-        
-        displayMessage("you scored a " + Math.round(currentScore/wordList.length * 100) + "%");
-        document.getElementById("word").style.fontSize = "medium";
-        
-        /*
-        var i;
-        for(i = 0; i< needsWork.length;i++)
-        {
-            alert(document.getElementById("word").innerHTML = needsWork[i]);
-            document.getElementById("word").innerHTML = needsWork[i];
-            
-        }
 
-        */
-      
-        
-        
-        document.getElementById("word").innerHTML = needsWork;
-        
-        
-        
-        if(currentScore == wordList.length ) //if got all correct
-            {
-        displayMessage("PERFECT");
-                responsiveVoice.speak("PERFECT", "US English Female");
-            }
-         document.getElementById("correct").setAttribute('style',"visibility: hidden;"); //hide correct button
-         document.getElementById("wrong").setAttribute('style',"visibility: hidden;");//hide wrong button
-        document.getElementById("submit2").setAttribute('style',"visibility: visible;");//hide wrong button
-        
-    }
    
         
         

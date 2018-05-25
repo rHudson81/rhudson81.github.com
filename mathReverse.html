@@ -2,7 +2,7 @@
     Class: IS 490
     Project: Childrens learning website
     Date: 4/18/18
-    mathExploded.html
+    mathreverse.html
 
 simple addition and subtractions randomly generated from an array
 *need brief instructions before starting the game
@@ -55,7 +55,7 @@ displays a number, child must enter two numbers that either that would complete 
     </div>
     
     <div class = "content">
-   <button class = "buttons" id = "go" onclick = "xplodeGo()">GO</button>
+   <button class = "buttons" id = "go" onclick = "reverseGo()">GO</button>
 <br/>
     <span class = "message" id = "message" style = "visibility:hidden"></span>
         <div class = "problem" id = "problem" style = "visibility:hidden">
@@ -71,9 +71,8 @@ displays a number, child must enter two numbers that either that would complete 
             
         </div>
         <br>
-       <!-- <button  class = "buttons"type = "submit" id = "submit" onclick = "solveIt()"style= "visibility: hidden">SUBMIT</button>  
--->
-        <button class = "buttons" type = "submit2" id = "submit2" onclick = "xplodeGo()"style= "visibility: hidden">AGAIN</button>
+        
+        <button class = "buttons" type = "submit2" id = "submit2" onclick = "reverseGo()"style= "visibility: hidden">AGAIN</button>
 
     <h1 id = "result"> </h1>
     
@@ -89,139 +88,19 @@ var score = 0;
 var number;
 
     
-  
+ function removeElement(elementId)
+{
+// Removes an element from the document
+var element = document.getElementById(elementId);
+element.parentNode.removeChild(element);
+}  
+
 
   
-    function xplodeGo()       //starts the game
-    {
-      if (document.contains(document.getElementById("inst")))
-        {
-           removeElement("inst");//remove instructions from page 
-            
-        }  
-        document.getElementById("message").setAttribute('style',"visibility: hidden;");
-        document.getElementById("submit2").setAttribute('style',"visibility: hidden;");
-        document.getElementById("problem").setAttribute('style',"visibility: visible;");
-         document.getElementById("n1").setAttribute('style',"visibility: visible;");
-         document.getElementById("n2").setAttribute('style',"visibility: visible;");
-    document.getElementById("number").setAttribute('style',"visibility: visible;");
-    //document.getElementById("submit").setAttribute('style',"visibility: visible;");
-    document.getElementById("go").setAttribute('style',"visibility: hidden;");
-        document.getElementById("n1").value = '';
-        document.getElementById("n2").value = '';
-        document.getElementById("n1").focus();
-        
-        simpleProblem();
-        
-        document.onkeydown = function(event)
-         {  
-            var code = event.keyCode;
-            if(code === 13)
-               {
-
-               solveIt();
-               }
-        } 
-    }
+    
  
     
-    
-function simpleProblem()
-    {
-        //random number between 1 and 100
-        number = parseInt(Math.floor(Math.random() * 20) + 1);
-        n2 = parseInt(Math.floor(Math.random() * number) + 1);
-        sign = signArray[Math.floor(Math.random()*signArray.length)];
-        
-      
-        if(sign == "-") //to make sure there are no negative numbers
-            {   
-                if(n2 < number) //switch em
-                   {
-                       
-                       
-                       
-                   var temp = number;
-                    number = n2;
-                    n2 = temp;
-                    temp = null;
-                   }
-                
-                
-            }
-        
-        //display
-        document.getElementById("number").innerHTML = number;
-        document.getElementById("n2").innerHTML = n2;
-        document.getElementById("sign").innerHTML = sign;
-    }
-    
-   
-    
-    
-    
-    function solveIt() //when button is pressed
-    { 
-        
-       var n1 =  document.getElementById("n1").value;
-        var n2 =  document.getElementById("n2").innerHTML;
-        
-       
-        
-       if((sign == "+" && parseInt(n1) + parseInt(n2) == number) ||
-          (sign =="-" && parseInt(n2) - parseInt(n1) == number)) //if correct
-            {
 
-              displayMessage("CORRECT");
-                responsiveVoice.speak(posResponses[Math.floor(Math.random() * posResponses.length)], "US English Female");
-              score++;
-              document.getElementById("score").innerHTML = score;
-                document.getElementById("submit2").setAttribute('style',"visibility: visible;");
-                //document.getElementById("submit").setAttribute('style',"visibility: hidden;");
-
-                //document.getElementById("submit2").setAttribute('style',"visibility: visible;");
-                //change out textboxs with correct numbers
-                //show message for good job and gettting it correct
-
-
-                document.onkeydown = function(event)
-                 {  
-                    var code = event.keyCode;
-                    if(code === 13)
-                       {
-
-                       xplodeGo();
-                       }
-                } 
-
-
-            }
-          else  //incorrect
-              {
-                 displayMessage("INCORRECT");
-                  responsiveVoice.speak("sorry, try again", "US English Female");
-                  document.getElementById("n1").value = '';
-                document.getElementById("n2").value = '';
-                document.getElementById("n1").focus();
-                 // document.getElementById("submit2").setAttribute('style',"visibility: visible;");
-               // document.getElementById("submit").setAttribute('style',"visibility: hidden;");
-
-               // document.getElementById("submit2").setAttribute('style',"visibility: visible;");
-            }
-          
-         
-         
-    }
- 
-    
-function clearIt()
-    {
-      n1 = null;
-        n2 = null;
-       answer = null;
-        sign = null;
-        
-    }
    
     
     //for voice

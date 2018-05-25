@@ -97,127 +97,13 @@ var n1;
 var n2;
 var sign;
     
-  
-
-  //functions  
-    function go()       //starts the game
-    {
-        
-    if (document.contains(document.getElementById("inst")))
-        {
-           removeElement("inst");//remove instructions from page 
-            
-        }
-        document.getElementById("message").setAttribute('style',"visibility: hidden;");
-        document.getElementById("submit2").setAttribute('style',"visibility: hidden;");
-        document.getElementById("answer").setAttribute('style',"visibility: visible;");
-        
-        document.getElementById("problem").setAttribute('style',"visibility: visible;");
-        //document.getElementById("submit").setAttribute('style',"visibility: visible;");
-        
-        document.getElementById("go").setAttribute('style',"visibility: hidden;");
-        document.getElementById("displayAnswer").innerHTML = '';
-        simpleProblem();
-        
-        document.onkeydown = function(event)
-         {  
-            var code = event.keyCode;
-
-
-            if(code === 13)
-               {
-
-               solveIt();
-               }
-        }
-        
-        
-        }
+function removeElement(elementId)
+{
+// Removes an element from the document
+var element = document.getElementById(elementId);
+element.parentNode.removeChild(element);
+}  
     
-function simpleProblem()
-    {
-n1 = parseInt(Math.floor(Math.random() * 10) + 1);
-n2 = parseInt(Math.floor(Math.random() * 10) + 1) ;
-sign = signArray[Math.floor(Math.random()*signArray.length)];
-        
-      
-        if(sign == "-") //to make sure there are no negative numbers
-            {   
-                if(n2 > n1) //switch em
-                   {
-                   var temp = n1;
-                    n1 = n2;
-                    n2 = temp;
-                    temp = null;
-                   }
-                
-            }
-        document.getElementById("n1").innerHTML = n1;
-        document.getElementById("sign").innerHTML = sign;
-        document.getElementById("n2").innerHTML = n2;
-       document.getElementById("answer").focus(); 
-    }
-    
-function solveIt() //when button is pressed
-{ 
-
-   var answer =  document.getElementById("answer").value;
-
-    if(n1 + n2 == answer || n1-n2 == answer) //if correct
-            {
-                score++;
-                document.getElementById("score").innerHTML = score;
-                document.getElementById("answer").value = '';
-                document.getElementById("displayAnswer").innerHTML = answer;
-
-                //display message for correct
-                displayMessage("CORRECT");
-                
-                ;
-                
-                responsiveVoice.speak(posResponses[Math.floor(Math.random() * posResponses.length)], "US English Female");
-
-                document.getElementById("answer").setAttribute('style',"visibility: hidden;");
-               //document.getElementById("submit").setAttribute('style',"visibility: hidden;");
-                document.getElementById("submit2").setAttribute('style',"visibility: visible;");
-                
-                document.onkeydown = function(event)
-                         {  
-                            var code = event.keyCode;
-
-
-                            if(code === 13)
-                               {
-
-                               go();
-                               }
-                        }
-              }
-          else  //incorrect
-              {
-                  displayMessage("TRY AGAIN");
-                  responsiveVoice.speak("sorry, try again", "US English Female");
-                  document.getElementById("answer").value = "";
-                  document.getElementById("answer").focus();
-                  
-                  
-              }
-      }
-
-    
-    
-
-    
-    
-function clearIt()
-    {
-      n1 = null;
-        n2 = null;
-       answer = null;
-        sign = null;
-        
-    }
-   
 $('#n1').click(function(){responsiveVoice.speak(($("#n1").text()));}) 
     $('#n2').click(function(){responsiveVoice.speak(($("#n2").text()));})
     
