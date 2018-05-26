@@ -15,7 +15,7 @@ body{
         }
 
 .headings {
-    font-family: 'chalk', "Arial";
+    font-family: 'Walter Turncoat', "Arial";
     font-size: 80px;
 }
 
@@ -379,14 +379,6 @@ input[type=number]::-webkit-outer-spin-button {
 
 
 
-/* CRAYON FONT */
-@font-face {
-    font-family: 'chalk';
-    src: url('.css/fonts/chalk.ttf') format('truetype');
-    src: url('.css/fonts/chalk.otf') format('opentype');
-    
-    
-}
  
 
 

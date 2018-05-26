@@ -19,7 +19,8 @@ possibility  of explaining the problem better if incorrect answer is given
  <link rel="stylesheet" type="text/css" href="css/style.css">
 <script src="private/jFunctions.js"> </script>
     <script src="private/arrays.js"> </script>
-<script src='https://code.responsivevoice.org/responsivevoice.js'></script>
+<script src='https://code.responsivevoice.org/responsivevoice.js'></script>    
+<link href="https://fonts.googleapis.com/css?family=Walter+Turncoat" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     
 </head>
@@ -60,9 +61,10 @@ possibility  of explaining the problem better if incorrect answer is given
      
     <br/>
         <span class = "message" id = "message" style = "visibility:hidden"></span>
-      <div class = "problem" id = "problem"style = "visibility:hidden">  
+      <div class = "problem" id = "problem" style = "visibility:hidden">  
         <span id = "n1" > </span>
         <span id = "sign"> </span>
+          
         <span id = "n2" > </span> 
           <span>=</span>
           <span id ="displayAnswer" ></span>
@@ -71,7 +73,7 @@ possibility  of explaining the problem better if incorrect answer is given
        </div>
     
 
-    <button class = "buttons" id = "go" onclick = "go()">GO</button>
+    <button class = "buttons" id = "go">GO</button>
 <br/>
         <button class = "buttons" type = "submit2" id = "submit2" style= "visibility: hidden">AGAIN</button>
     <h1 id = "result"> </h1>
@@ -94,19 +96,14 @@ var n1;
 var n2;
 var sign;
     
-function removeElement(elementId)
-{
-// Removes an element from the document
-var element = document.getElementById(elementId);
-element.parentNode.removeChild(element);
-}  
 
-    //jquery for buttons and speach for numbers
-    $('#go').click(function(){go();})
-    $('#submit2').click(function(){go();})
-    
+
+//jquery for buttons and speach for numbers
+$('#go').click(function(){go();})
+$('#submit2').click(function(){go();})
+
 $('#n1').click(function(){responsiveVoice.speak(($("#n1").text()));}) 
-    $('#n2').click(function(){responsiveVoice.speak(($("#n2").text()));})
+$('#n2').click(function(){responsiveVoice.speak(($("#n2").text()));})
     
     
 </script>

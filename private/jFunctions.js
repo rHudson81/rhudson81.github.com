@@ -2,12 +2,10 @@
 //for mathAddSub.html
  function go()       //starts the game
     {
-        //if instructions are there remove them 
-    if (document.contains(document.getElementById("inst")))
-        {
-           removeElement("inst");//remove instructions from page 
-            
-        }
+        
+   //hide instructions
+    document.getElementById("inst").setAttribute('style',"visibility: hidden; height:0px;");
+        
         //and make  everything else visible
         document.getElementById("message").setAttribute('style',"visibility: hidden;");
         document.getElementById("submit2").setAttribute('style',"visibility: hidden;");
@@ -119,11 +117,10 @@ function solveIt() //when button is pressed
 function reverseGo()       //starts the game
     {
         
-      if (document.contains(document.getElementById("inst")))
-        {
-           removeElement("inst");//remove instructions from page 
-            
-        }  
+     //hide instructions
+    document.getElementById("inst").setAttribute('style',"visibility: hidden; height:0px;");
+        
+        
         //make all the stuf visible
         document.getElementById("message").setAttribute('style',"visibility: hidden;");
         document.getElementById("submit2").setAttribute('style',"visibility: hidden;");
@@ -229,12 +226,8 @@ function reverseGo()       //starts the game
 //for readingAnimal.html
 function animalGo()
     {
-        //if instructions are there
-        if (document.contains(document.getElementById("inst")))
-        {
-           removeElement("inst");//remove instructions from page 
-
-        }
+    //hide instructions
+    document.getElementById("inst").setAttribute('style',"visibility: hidden; height:0px;");
         
         //clear message
         displayMessage("");
@@ -470,11 +463,9 @@ function sightGo()       //starts the game
         current = 0;
         currentScore = 0;
         
-if (document.contains(document.getElementById("inst")))
-        {
-           removeElement("inst");//remove instructions from page 
-            
-        }
+//hide instructions
+    document.getElementById("inst").setAttribute('style',"visibility: hidden; height:0px;");
+        
      document.getElementById("word").style.fontSize = "100px";   
      document.getElementById("correct").setAttribute('style',"visibility: visible;");
     document.getElementById("wrong").setAttribute('style',"visibility: visible;");
@@ -580,11 +571,11 @@ function capitalize(string)
     
 function sentencesGo()
 {
-     //if instructions are there
-        if (document.contains(document.getElementById("inst")))
-        {
-           removeElement("inst");//remove instructions from page 
-        }
+     //hide instructions
+    document.getElementById("inst").setAttribute('style',"visibility: hidden; height:0px;");
+    document.getElementById("simplegosample").setAttribute('style',"visibility: hidden;");
+        document.getElementById("sillygosample").setAttribute('style',"visibility: hidden;");
+    
     
     //and make everything else visible
      document.getElementById("simplego").setAttribute('style',"visibility: visible;");
@@ -624,9 +615,10 @@ document.getElementById("message").innerHTML = message;
 }
 
 //for removing elements from the pages(instructions)
-function removeElement(elementId)
+/*function removeElement(elementId)
 {
     // Removes an element from the document
     var element = document.getElementById(elementId);
     element.parentNode.removeChild(element);
 } 
+*/
