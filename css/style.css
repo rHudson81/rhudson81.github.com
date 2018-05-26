@@ -15,8 +15,8 @@ body{
         }
 
 .headings {
-    font-family: 'crayon';
-    font-size: 100px;
+    font-family: 'chalk', "Arial";
+    font-size: 80px;
 }
 
 .content{
@@ -65,7 +65,7 @@ img {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 25px;
 }
 
 
@@ -381,8 +381,9 @@ input[type=number]::-webkit-outer-spin-button {
 
 /* CRAYON FONT */
 @font-face {
-    font-family: 'crayon', 'Arial';
-    src: url('.css/fonts/crayon.ttf');
+    font-family: 'chalk';
+    src: url('.css/fonts/chalk.ttf') format('truetype');
+    src: url('.css/fonts/chalk.otf') format('opentype');
     
     
 }
