@@ -55,7 +55,7 @@ displays a number, child must enter two numbers that either that would complete 
     </div>
     
     <div class = "content">
-   <button class = "buttons" id = "go" onclick = "reverseGo()">GO</button>
+   <button class = "buttons" id = "go">GO</button>
 <br/>
     <span class = "message" id = "message" style = "visibility:hidden"></span>
         <div class = "problem" id = "problem" style = "visibility:hidden">
@@ -87,7 +87,11 @@ displays a number, child must enter two numbers that either that would complete 
 var score = 0;
 var number;
 
-      
+      //jquery
+    //for buttons 
+    
+    $('#go').click(function(){reverseGo();})
+    $('#submit2').click(function(){reverseGo();})
     //for voice
 $('#number').click(function(){responsiveVoice.speak(($("#number").text()));})
     $('#n2').click(function(){responsiveVoice.speak(($("#n2").text()));})

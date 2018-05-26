@@ -64,8 +64,8 @@ displays  one sight word at a time, child is to read the sight word and say it, 
       <span class = "message" id = "message" style = "visibility:hidden"></span>  
       
     
-   <input type = "image" src = "css/yes.png" id ="correct" onclick = "correct()"  style="visibility:hidden" />
-        <button class = "buttons" id = "go" onclick = "sightGo()">GO</button>
+   <input type = "image" src = "css/yes.png" id ="correct"   style="visibility:hidden" />
+        <button class = "buttons" id = "go">GO</button>
         <input type = "image" src = "css/no.png" id ="wrong" onclick = "wrong()" style="visibility:hidden"/><br>
         <button class = "buttons" type = "submit2" id = "submit2" onclick = "sightGo()"style= "visibility: hidden">AGAIN</button>
         <br/>
@@ -88,15 +88,18 @@ var needsWork = [];
 var perfect = "PERFECT";
 var needsWork = [];
    
-        
-      
+  //jquery
+    //for buttons
+    $('#correct').click(function(){correct();})
+    $('#go').click(function(){sightGo();})        
+    $('#submit2').click(function(){sightGo();}) 
     
 //for responsiveword.js
 $('#word').click(function(){responsiveVoice.speak(($("#word").text()), "US English Female");})
     
     
 </script>
-    
+  
     
 </body><div class="footer" style="width:300px;vertical-align:top;font-family: Arial;font-size:9pt;line-height: normal">
 <a rel="license" href="//responsivevoice.org/"><img title="ResponsiveVoice Text To Speech" src="https://responsivevoice.org/wp-content/uploads/2014/08/120x31.png" style="float:left;padding-right:2px" /></a><span xmlns:dct="https://purl.org/dc/terms/" property="dct:title"><a href="//responsivevoice.org/" target="_blank" title="ResponsiveVoice Text To Speech">ResponsiveVoice</a></span> used under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" title="Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License">Non-Commercial License</a></div>

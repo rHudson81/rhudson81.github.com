@@ -47,7 +47,7 @@ randomly generated sentence for practice reading
             
             
     
-         <button class = "buttons" type = "submit" id = "instSub" onclick = "sentencesGo();">Okay, Let's Play</button>
+         <button class = "buttons" type = "submit" id = "instSub" >Okay, Let's Play</button>
         </div>
         
         
@@ -77,15 +77,18 @@ randomly generated sentence for practice reading
         </div>
         
 
-    <button class = "buttons" id = "simplego" onclick = "buildSimpleSentence()" style = "visibility:hidden">Simple</button>OR
-        <button class = "buttons"id = "sillygo" onclick = "buildSillySentence()" style = "visibility:hidden">Advanced</button>
+    <button class = "buttons" id = "simplego" style = "visibility:hidden">Simple</button>OR
+        <button class = "buttons"id = "sillygo"  style = "visibility:hidden">Advanced</button>
    
         
         </div>
 
 <script>
-  
-    
+    //jquery
+    //for buttons
+    $('#instSub').click(function(){sentencesGo();})
+    $('#simplego').click(function(){buildSimpleSentence();})  
+    $('#sillygo').click(function(){buildSillySentence();})
  
     //<jquery for responsivespeech.js
 $('#simArt').click(function(){responsiveVoice.speak(($("#simArt").text()), "US English Female");}) 

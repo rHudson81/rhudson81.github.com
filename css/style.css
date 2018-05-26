@@ -3,7 +3,7 @@
     Class: IS 490
     Project: Childrens learning website
     Date: 4/11/18
-   games.css
+   style.css
 */
 
 
@@ -20,16 +20,16 @@ body{
 }
 
 .content{
-             max-width: 1000px;
-            margin: auto;
-            text-align: center;
-            }
+         max-width: 1000px;
+        margin: auto;
+        text-align: center;
+        }
 
 .contentInst
 {
     max-width:1000px;
-            margin: auto;
-            text-align: center;
+    margin: auto;
+    text-align: center;
     font-size: 25px;
     font-family: "Arial";
             }
