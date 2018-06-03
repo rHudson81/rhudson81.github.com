@@ -443,7 +443,7 @@ function displayResults()
         
         
         //display all the words that need work
-        document.getElementById("word").innerHTML = needsWork;
+       // document.getElementById("word").innerHTML = needsWork;
         
         
         
@@ -468,6 +468,7 @@ function sightGo()       //starts the game
         
      document.getElementById("word").style.fontSize = "100px";   
      document.getElementById("correct").setAttribute('style',"visibility: visible;");
+        
     document.getElementById("wrong").setAttribute('style',"visibility: visible;");
     document.getElementById("word").innerHTML = wordList[current];    
     document.getElementById("go").setAttribute('style',"visibility: hidden;");
@@ -486,7 +487,7 @@ function wrong()
         current++;//go to next word
         
         //add the wrong word to the array of ones that need work
-       needsWork.push(wordList[current-1]);
+      // needsWork.push(wordList[current-1]);
         
       
        document.getElementById("word").innerHTML = wordList[current];

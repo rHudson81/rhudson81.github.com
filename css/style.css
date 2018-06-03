@@ -123,7 +123,15 @@ img {
 } 
 }
 
+#triesLabel {
+    font-family: "Arial";
+            font-size:25px;
+}
 
+#attemptsLeft {
+    font-family: "Arial";
+            font-size:25px;
+}
 
 
 
