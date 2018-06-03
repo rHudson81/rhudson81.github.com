@@ -69,7 +69,10 @@ function solveIt() //when button is pressed
 
         
         //if correct
-    if(n1 + n2 == answer || n1-n2 == answer) //if correct
+    if(
+        (sign == "+" && n1 + n2 == answer) || 
+        (sign == "-" && n1-n2 == answer)
+    ) //if correct
             {
                 //add to score
                 score++;
