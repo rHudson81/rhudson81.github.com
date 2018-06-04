@@ -284,6 +284,11 @@ function checkLetter(cloneBlank, cloneArray, letter, keyCode)
                     //remove one from tries left
                     triesLeft --;
                     
+                    if(triesLeft == 1)
+                       {
+                       responsiveVoice.speak("last chance", "US English Female");
+                       
+                       }
                     //if out of tries
                     if(triesLeft == 0)
                     {
